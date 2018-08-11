@@ -1,0 +1,46 @@
+# 后端配置
+server:
+  port: 9000
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+      exclude: src/main/resources
+  http:
+    encoding:
+      force: false
+      charset: UTF-8
+      enabled: true
+
+  messages:
+    encoding: UTF-8
+
+  mvc:
+    static-path-pattern: /**
+  thymeleaf:
+    cache: true
+    prefix: classpath:/templates/ #对文件夹进行拦截
+    suffic: .html                 #对文件格式进行限制
+    mode: HTML5
+    encoding: UTF-8
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/work?characterEncoding=utf8&useSSL=true
+    username: root
+    password: 12345678
+
+mybatis:
+  mapper-locations: classpath:mybatis/warehouse/*.xml
+  type-aliases-package: com.prd.warehouse.entity
+  configuration:
+    mapUnderscoreToCamelCase: true
+    useColumnLabel: true
+
+
+logging:
+  config: classpath:config/logback.xml

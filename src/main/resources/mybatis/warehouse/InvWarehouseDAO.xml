@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prd.warehouse.dao.InvWarehouseDAO">
+  <resultMap id="BaseResultMap" type="com.prd.warehouse.entity.InvWarehouse">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="wh_no" jdbcType="VARCHAR" property="whNo" />
+    <result column="wh_name" jdbcType="VARCHAR" property="whName" />
+    <result column="locator_control_flag" jdbcType="INTEGER" property="locatorControlFlag" />
+    <result column="entry_mrp_flag" jdbcType="INTEGER" property="entryMrpFlag" />
+    <result column="org_id" jdbcType="VARCHAR" property="orgId" />
+    <result column="attribute" jdbcType="VARCHAR" property="attribute" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+  </resultMap>
+
+  <sql id="Base_Column_List_1">
+    id, wh_no, wh_name
+  </sql>
+
+  <sql id="Base_Column_List">
+    id, wh_no, wh_name, locator_control_flag, entry_mrp_flag, org_id, attribute, create_date, 
+    create_by
+  </sql>
+
+
+  <select id="selectInvWarehouseByID" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List_1" />
+    from inv_warehouse
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from inv_warehouse
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.prd.warehouse.entity.InvWarehouse">
+    insert into inv_warehouse (id, wh_no, wh_name, 
+      locator_control_flag, entry_mrp_flag, org_id, 
+      attribute, create_date, create_by
+      )
+    values (#{id,jdbcType=VARCHAR}, #{whNo,jdbcType=VARCHAR}, #{whName,jdbcType=VARCHAR}, 
+      #{locatorControlFlag,jdbcType=INTEGER}, #{entryMrpFlag,jdbcType=INTEGER}, #{orgId,jdbcType=VARCHAR}, 
+      #{attribute,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.prd.warehouse.entity.InvWarehouse">
+    insert into inv_warehouse
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="whNo != null">
+        wh_no,
+      </if>
+      <if test="whName != null">
+        wh_name,
+      </if>
+      <if test="locatorControlFlag != null">
+        locator_control_flag,
+      </if>
+      <if test="entryMrpFlag != null">
+        entry_mrp_flag,
+      </if>
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="attribute != null">
+        attribute,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="whNo != null">
+        #{whNo,jdbcType=VARCHAR},
+      </if>
+      <if test="whName != null">
+        #{whName,jdbcType=VARCHAR},
+      </if>
+      <if test="locatorControlFlag != null">
+        #{locatorControlFlag,jdbcType=INTEGER},
+      </if>
+      <if test="entryMrpFlag != null">
+        #{entryMrpFlag,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null">
+        #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.prd.warehouse.entity.InvWarehouse">
+    update inv_warehouse
+    <set>
+      <if test="whNo != null">
+        wh_no = #{whNo,jdbcType=VARCHAR},
+      </if>
+      <if test="whName != null">
+        wh_name = #{whName,jdbcType=VARCHAR},
+      </if>
+      <if test="locatorControlFlag != null">
+        locator_control_flag = #{locatorControlFlag,jdbcType=INTEGER},
+      </if>
+      <if test="entryMrpFlag != null">
+        entry_mrp_flag = #{entryMrpFlag,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null">
+        org_id = #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null">
+        attribute = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.prd.warehouse.entity.InvWarehouse">
+    update inv_warehouse
+    set wh_no = #{whNo,jdbcType=VARCHAR},
+      wh_name = #{whName,jdbcType=VARCHAR},
+      locator_control_flag = #{locatorControlFlag,jdbcType=INTEGER},
+      entry_mrp_flag = #{entryMrpFlag,jdbcType=INTEGER},
+      org_id = #{orgId,jdbcType=VARCHAR},
+      attribute = #{attribute,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prd.warehouse.dao.InvMoveOrderDAO">
+  <resultMap id="BaseResultMap" type="com.prd.warehouse.entity.InvMoveOrder">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="ORDER_STATUS" jdbcType="VARCHAR" property="orderStatus" />
+    <result column="ORDER_TYPE" jdbcType="VARCHAR" property="orderType" />
+    <result column="TRANS_ID" jdbcType="VARCHAR" property="transId" />
+    <result column="ITEM_id" jdbcType="VARCHAR" property="itemId" />
+    <result column="SOURCE_WH_ID" jdbcType="VARCHAR" property="sourceWhId" />
+    <result column="SOURCE_LOCA_ID" jdbcType="VARCHAR" property="sourceLocaId" />
+    <result column="SOURCE_ORDER_id" jdbcType="VARCHAR" property="sourceOrderId" />
+    <result column="SOURCE_ORG_ID" jdbcType="VARCHAR" property="sourceOrgId" />
+    <result column="DEST_WH_ID" jdbcType="VARCHAR" property="destWhId" />
+    <result column="DEST_LOCA_ID" jdbcType="VARCHAR" property="destLocaId" />
+    <result column="DEST_ORDER_id" jdbcType="VARCHAR" property="destOrderId" />
+    <result column="DEST_ORG_ID" jdbcType="VARCHAR" property="destOrgId" />
+    <result column="ORDER_QUANTITY" jdbcType="DECIMAL" property="orderQuantity" />
+    <result column="EXEC_QUANTITY" jdbcType="DECIMAL" property="execQuantity" />
+    <result column="ITEM_SPEC" jdbcType="VARCHAR" property="itemSpec" />
+    <result column="lot_no" jdbcType="VARCHAR" property="lotNo" />
+    <result column="SERIAL_no" jdbcType="VARCHAR" property="serialNo" />
+    <result column="OPERATE_DEPA" jdbcType="VARCHAR" property="operateDepa" />
+    <result column="OPERATE_BY" jdbcType="VARCHAR" property="operateBy" />
+    <result column="OPERATE_DATE" jdbcType="TIMESTAMP" property="operateDate" />
+    <result column="PROCESS_DEPA" jdbcType="TIMESTAMP" property="processDepa" />
+    <result column="PROCESS_BY" jdbcType="VARCHAR" property="processBy" />
+    <result column="PROCESS_DATE" jdbcType="TIMESTAMP" property="processDate" />
+    <result column="ATTRIBUTE" jdbcType="VARCHAR" property="attribute" />
+    <result column="EXEC_BY" jdbcType="VARCHAR" property="execBy" />
+    <result column="EXEC_DATE" jdbcType="TIMESTAMP" property="execDate" />
+    <result column="EXEC_ERR_MSG" jdbcType="VARCHAR" property="execErrMsg" />
+    <result column="CREATE_BY" jdbcType="VARCHAR" property="createBy" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="COPR" jdbcType="DECIMAL" property="copr" />
+  </resultMap>
+
+  <sql id="Base_Column_List_1">
+    ID, ORDER_STATUS, ORDER_TYPE, TRANS_ID, ITEM_id, SOURCE_WH_ID, SOURCE_LOCA_ID,
+    DEST_WH_ID, DEST_LOCA_ID, ORDER_QUANTITY, EXEC_QUANTITY, ITEM_SPEC
+  </sql>
+
+  <sql id="Base_Column_List">
+    ID, ORDER_STATUS, ORDER_TYPE, TRANS_ID, ITEM_id, SOURCE_WH_ID, SOURCE_LOCA_ID, SOURCE_ORDER_id, 
+    SOURCE_ORG_ID, DEST_WH_ID, DEST_LOCA_ID, DEST_ORDER_id, DEST_ORG_ID, ORDER_QUANTITY, 
+    EXEC_QUANTITY, ITEM_SPEC, lot_no, SERIAL_no, OPERATE_DEPA, OPERATE_BY, OPERATE_DATE, 
+    PROCESS_DEPA, PROCESS_BY, PROCESS_DATE, ATTRIBUTE, EXEC_BY, EXEC_DATE, EXEC_ERR_MSG, 
+    CREATE_BY, CREATE_DATE, COPR
+  </sql>
+
+
+  <select id="selectInvMoveOrderById" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List_1" />
+    from inv_move_order
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+
+
+  <update id="updateOrderStatusByID" parameterType="com.prd.warehouse.entity.InvMoveOrder">
+    update inv_move_order
+    set ORDER_STATUS = #{orderStatus,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from inv_move_order
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.prd.warehouse.entity.InvMoveOrder">
+    insert into inv_move_order (ID, ORDER_STATUS, ORDER_TYPE, 
+      TRANS_ID, ITEM_id, SOURCE_WH_ID, 
+      SOURCE_LOCA_ID, SOURCE_ORDER_id, SOURCE_ORG_ID, 
+      DEST_WH_ID, DEST_LOCA_ID, DEST_ORDER_id, 
+      DEST_ORG_ID, ORDER_QUANTITY, EXEC_QUANTITY, 
+      ITEM_SPEC, lot_no, SERIAL_no, 
+      OPERATE_DEPA, OPERATE_BY, OPERATE_DATE, 
+      PROCESS_DEPA, PROCESS_BY, PROCESS_DATE, 
+      ATTRIBUTE, EXEC_BY, EXEC_DATE, 
+      EXEC_ERR_MSG, CREATE_BY, CREATE_DATE, 
+      COPR)
+    values (#{id,jdbcType=VARCHAR}, #{orderStatus,jdbcType=VARCHAR}, #{orderType,jdbcType=VARCHAR}, 
+      #{transId,jdbcType=VARCHAR}, #{itemId,jdbcType=VARCHAR}, #{sourceWhId,jdbcType=VARCHAR}, 
+      #{sourceLocaId,jdbcType=VARCHAR}, #{sourceOrderId,jdbcType=VARCHAR}, #{sourceOrgId,jdbcType=VARCHAR}, 
+      #{destWhId,jdbcType=VARCHAR}, #{destLocaId,jdbcType=VARCHAR}, #{destOrderId,jdbcType=VARCHAR}, 
+      #{destOrgId,jdbcType=VARCHAR}, #{orderQuantity,jdbcType=DECIMAL}, #{execQuantity,jdbcType=DECIMAL}, 
+      #{itemSpec,jdbcType=VARCHAR}, #{lotNo,jdbcType=VARCHAR}, #{serialNo,jdbcType=VARCHAR}, 
+      #{operateDepa,jdbcType=VARCHAR}, #{operateBy,jdbcType=VARCHAR}, #{operateDate,jdbcType=TIMESTAMP}, 
+      #{processDepa,jdbcType=TIMESTAMP}, #{processBy,jdbcType=VARCHAR}, #{processDate,jdbcType=TIMESTAMP}, 
+      #{attribute,jdbcType=VARCHAR}, #{execBy,jdbcType=VARCHAR}, #{execDate,jdbcType=TIMESTAMP}, 
+      #{execErrMsg,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{copr,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.prd.warehouse.entity.InvMoveOrder">
+    insert into inv_move_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="orderStatus != null">
+        ORDER_STATUS,
+      </if>
+      <if test="orderType != null">
+        ORDER_TYPE,
+      </if>
+      <if test="transId != null">
+        TRANS_ID,
+      </if>
+      <if test="itemId != null">
+        ITEM_id,
+      </if>
+      <if test="sourceWhId != null">
+        SOURCE_WH_ID,
+      </if>
+      <if test="sourceLocaId != null">
+        SOURCE_LOCA_ID,
+      </if>
+      <if test="sourceOrderId != null">
+        SOURCE_ORDER_id,
+      </if>
+      <if test="sourceOrgId != null">
+        SOURCE_ORG_ID,
+      </if>
+      <if test="destWhId != null">
+        DEST_WH_ID,
+      </if>
+      <if test="destLocaId != null">
+        DEST_LOCA_ID,
+      </if>
+      <if test="destOrderId != null">
+        DEST_ORDER_id,
+      </if>
+      <if test="destOrgId != null">
+        DEST_ORG_ID,
+      </if>
+      <if test="orderQuantity != null">
+        ORDER_QUANTITY,
+      </if>
+      <if test="execQuantity != null">
+        EXEC_QUANTITY,
+      </if>
+      <if test="itemSpec != null">
+        ITEM_SPEC,
+      </if>
+      <if test="lotNo != null">
+        lot_no,
+      </if>
+      <if test="serialNo != null">
+        SERIAL_no,
+      </if>
+      <if test="operateDepa != null">
+        OPERATE_DEPA,
+      </if>
+      <if test="operateBy != null">
+        OPERATE_BY,
+      </if>
+      <if test="operateDate != null">
+        OPERATE_DATE,
+      </if>
+      <if test="processDepa != null">
+        PROCESS_DEPA,
+      </if>
+      <if test="processBy != null">
+        PROCESS_BY,
+      </if>
+      <if test="processDate != null">
+        PROCESS_DATE,
+      </if>
+      <if test="attribute != null">
+        ATTRIBUTE,
+      </if>
+      <if test="execBy != null">
+        EXEC_BY,
+      </if>
+      <if test="execDate != null">
+        EXEC_DATE,
+      </if>
+      <if test="execErrMsg != null">
+        EXEC_ERR_MSG,
+      </if>
+      <if test="createBy != null">
+        CREATE_BY,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="copr != null">
+        COPR,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="transId != null">
+        #{transId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceWhId != null">
+        #{sourceWhId,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceLocaId != null">
+        #{sourceLocaId,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceOrderId != null">
+        #{sourceOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceOrgId != null">
+        #{sourceOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="destWhId != null">
+        #{destWhId,jdbcType=VARCHAR},
+      </if>
+      <if test="destLocaId != null">
+        #{destLocaId,jdbcType=VARCHAR},
+      </if>
+      <if test="destOrderId != null">
+        #{destOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="destOrgId != null">
+        #{destOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderQuantity != null">
+        #{orderQuantity,jdbcType=DECIMAL},
+      </if>
+      <if test="execQuantity != null">
+        #{execQuantity,jdbcType=DECIMAL},
+      </if>
+      <if test="itemSpec != null">
+        #{itemSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="lotNo != null">
+        #{lotNo,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNo != null">
+        #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="operateDepa != null">
+        #{operateDepa,jdbcType=VARCHAR},
+      </if>
+      <if test="operateBy != null">
+        #{operateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="operateDate != null">
+        #{operateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processDepa != null">
+        #{processDepa,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processBy != null">
+        #{processBy,jdbcType=VARCHAR},
+      </if>
+      <if test="processDate != null">
+        #{processDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attribute != null">
+        #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="execBy != null">
+        #{execBy,jdbcType=VARCHAR},
+      </if>
+      <if test="execDate != null">
+        #{execDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="execErrMsg != null">
+        #{execErrMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="copr != null">
+        #{copr,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.prd.warehouse.entity.InvMoveOrder">
+    update inv_move_order
+    <set>
+      <if test="orderStatus != null">
+        ORDER_STATUS = #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null">
+        ORDER_TYPE = #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="transId != null">
+        TRANS_ID = #{transId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null">
+        ITEM_id = #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceWhId != null">
+        SOURCE_WH_ID = #{sourceWhId,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceLocaId != null">
+        SOURCE_LOCA_ID = #{sourceLocaId,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceOrderId != null">
+        SOURCE_ORDER_id = #{sourceOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceOrgId != null">
+        SOURCE_ORG_ID = #{sourceOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="destWhId != null">
+        DEST_WH_ID = #{destWhId,jdbcType=VARCHAR},
+      </if>
+      <if test="destLocaId != null">
+        DEST_LOCA_ID = #{destLocaId,jdbcType=VARCHAR},
+      </if>
+      <if test="destOrderId != null">
+        DEST_ORDER_id = #{destOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="destOrgId != null">
+        DEST_ORG_ID = #{destOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderQuantity != null">
+        ORDER_QUANTITY = #{orderQuantity,jdbcType=DECIMAL},
+      </if>
+      <if test="execQuantity != null">
+        EXEC_QUANTITY = #{execQuantity,jdbcType=DECIMAL},
+      </if>
+      <if test="itemSpec != null">
+        ITEM_SPEC = #{itemSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="lotNo != null">
+        lot_no = #{lotNo,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNo != null">
+        SERIAL_no = #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="operateDepa != null">
+        OPERATE_DEPA = #{operateDepa,jdbcType=VARCHAR},
+      </if>
+      <if test="operateBy != null">
+        OPERATE_BY = #{operateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="operateDate != null">
+        OPERATE_DATE = #{operateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processDepa != null">
+        PROCESS_DEPA = #{processDepa,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processBy != null">
+        PROCESS_BY = #{processBy,jdbcType=VARCHAR},
+      </if>
+      <if test="processDate != null">
+        PROCESS_DATE = #{processDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attribute != null">
+        ATTRIBUTE = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="execBy != null">
+        EXEC_BY = #{execBy,jdbcType=VARCHAR},
+      </if>
+      <if test="execDate != null">
+        EXEC_DATE = #{execDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="execErrMsg != null">
+        EXEC_ERR_MSG = #{execErrMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        CREATE_BY = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="copr != null">
+        COPR = #{copr,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.prd.warehouse.entity.InvMoveOrder">
+    update inv_move_order
+    set ORDER_STATUS = #{orderStatus,jdbcType=VARCHAR},
+      ORDER_TYPE = #{orderType,jdbcType=VARCHAR},
+      TRANS_ID = #{transId,jdbcType=VARCHAR},
+      ITEM_id = #{itemId,jdbcType=VARCHAR},
+      SOURCE_WH_ID = #{sourceWhId,jdbcType=VARCHAR},
+      SOURCE_LOCA_ID = #{sourceLocaId,jdbcType=VARCHAR},
+      SOURCE_ORDER_id = #{sourceOrderId,jdbcType=VARCHAR},
+      SOURCE_ORG_ID = #{sourceOrgId,jdbcType=VARCHAR},
+      DEST_WH_ID = #{destWhId,jdbcType=VARCHAR},
+      DEST_LOCA_ID = #{destLocaId,jdbcType=VARCHAR},
+      DEST_ORDER_id = #{destOrderId,jdbcType=VARCHAR},
+      DEST_ORG_ID = #{destOrgId,jdbcType=VARCHAR},
+      ORDER_QUANTITY = #{orderQuantity,jdbcType=DECIMAL},
+      EXEC_QUANTITY = #{execQuantity,jdbcType=DECIMAL},
+      ITEM_SPEC = #{itemSpec,jdbcType=VARCHAR},
+      lot_no = #{lotNo,jdbcType=VARCHAR},
+      SERIAL_no = #{serialNo,jdbcType=VARCHAR},
+      OPERATE_DEPA = #{operateDepa,jdbcType=VARCHAR},
+      OPERATE_BY = #{operateBy,jdbcType=VARCHAR},
+      OPERATE_DATE = #{operateDate,jdbcType=TIMESTAMP},
+      PROCESS_DEPA = #{processDepa,jdbcType=TIMESTAMP},
+      PROCESS_BY = #{processBy,jdbcType=VARCHAR},
+      PROCESS_DATE = #{processDate,jdbcType=TIMESTAMP},
+      ATTRIBUTE = #{attribute,jdbcType=VARCHAR},
+      EXEC_BY = #{execBy,jdbcType=VARCHAR},
+      EXEC_DATE = #{execDate,jdbcType=TIMESTAMP},
+      EXEC_ERR_MSG = #{execErrMsg,jdbcType=VARCHAR},
+      CREATE_BY = #{createBy,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      COPR = #{copr,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

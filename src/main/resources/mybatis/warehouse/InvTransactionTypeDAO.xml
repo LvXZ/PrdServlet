@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prd.warehouse.dao.InvTransactionTypeDAO">
+  <resultMap id="BaseResultMap" type="com.prd.warehouse.entity.InvTransactionType">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="TRANS_TYPE" jdbcType="VARCHAR" property="transType" />
+    <result column="TRANS_no" jdbcType="VARCHAR" property="transNo" />
+    <result column="TRANS_NAME" jdbcType="VARCHAR" property="transName" />
+    <result column="TRANS_FLOW" jdbcType="VARCHAR" property="transFlow" />
+    <result column="USER_DEFINE_FLAG" jdbcType="VARCHAR" property="userDefineFlag" />
+    <result column="ENABLE_FLAG" jdbcType="VARCHAR" property="enableFlag" />
+    <result column="DISABLE_DATE" jdbcType="TIMESTAMP" property="disableDate" />
+    <result column="ATTRIBUTE" jdbcType="VARCHAR" property="attribute" />
+    <result column="CREATE_BY" jdbcType="VARCHAR" property="createBy" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="MODIFY_BY" jdbcType="VARCHAR" property="modifyBy" />
+    <result column="MODIFY_DATE" jdbcType="TIMESTAMP" property="modifyDate" />
+  </resultMap>
+
+  <sql id="Base_Column_List_1">
+    id, TRANS_TYPE, TRANS_FLOW, USER_DEFINE_FLAG, ENABLE_FLAG
+  </sql>
+
+  <sql id="Base_Column_List">
+    id, TRANS_TYPE, TRANS_no, TRANS_NAME, TRANS_FLOW, USER_DEFINE_FLAG, ENABLE_FLAG, 
+    DISABLE_DATE, ATTRIBUTE, CREATE_BY, CREATE_DATE, MODIFY_BY, MODIFY_DATE
+  </sql>
+
+
+  <select id="selectInvTransactionTypeByID" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List_1" />
+    from inv_transaction_type
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from inv_transaction_type
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.prd.warehouse.entity.InvTransactionType">
+    insert into inv_transaction_type (id, TRANS_TYPE, TRANS_no, 
+      TRANS_NAME, TRANS_FLOW, USER_DEFINE_FLAG, 
+      ENABLE_FLAG, DISABLE_DATE, ATTRIBUTE, 
+      CREATE_BY, CREATE_DATE, MODIFY_BY, 
+      MODIFY_DATE)
+    values (#{id,jdbcType=VARCHAR}, #{transType,jdbcType=VARCHAR}, #{transNo,jdbcType=VARCHAR}, 
+      #{transName,jdbcType=VARCHAR}, #{transFlow,jdbcType=VARCHAR}, #{userDefineFlag,jdbcType=VARCHAR}, 
+      #{enableFlag,jdbcType=VARCHAR}, #{disableDate,jdbcType=TIMESTAMP}, #{attribute,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=VARCHAR}, 
+      #{modifyDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.prd.warehouse.entity.InvTransactionType">
+    insert into inv_transaction_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="transType != null">
+        TRANS_TYPE,
+      </if>
+      <if test="transNo != null">
+        TRANS_no,
+      </if>
+      <if test="transName != null">
+        TRANS_NAME,
+      </if>
+      <if test="transFlow != null">
+        TRANS_FLOW,
+      </if>
+      <if test="userDefineFlag != null">
+        USER_DEFINE_FLAG,
+      </if>
+      <if test="enableFlag != null">
+        ENABLE_FLAG,
+      </if>
+      <if test="disableDate != null">
+        DISABLE_DATE,
+      </if>
+      <if test="attribute != null">
+        ATTRIBUTE,
+      </if>
+      <if test="createBy != null">
+        CREATE_BY,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="modifyBy != null">
+        MODIFY_BY,
+      </if>
+      <if test="modifyDate != null">
+        MODIFY_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="transType != null">
+        #{transType,jdbcType=VARCHAR},
+      </if>
+      <if test="transNo != null">
+        #{transNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transName != null">
+        #{transName,jdbcType=VARCHAR},
+      </if>
+      <if test="transFlow != null">
+        #{transFlow,jdbcType=VARCHAR},
+      </if>
+      <if test="userDefineFlag != null">
+        #{userDefineFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="enableFlag != null">
+        #{enableFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="disableDate != null">
+        #{disableDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attribute != null">
+        #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null">
+        #{modifyBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null">
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.prd.warehouse.entity.InvTransactionType">
+    update inv_transaction_type
+    <set>
+      <if test="transType != null">
+        TRANS_TYPE = #{transType,jdbcType=VARCHAR},
+      </if>
+      <if test="transNo != null">
+        TRANS_no = #{transNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transName != null">
+        TRANS_NAME = #{transName,jdbcType=VARCHAR},
+      </if>
+      <if test="transFlow != null">
+        TRANS_FLOW = #{transFlow,jdbcType=VARCHAR},
+      </if>
+      <if test="userDefineFlag != null">
+        USER_DEFINE_FLAG = #{userDefineFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="enableFlag != null">
+        ENABLE_FLAG = #{enableFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="disableDate != null">
+        DISABLE_DATE = #{disableDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attribute != null">
+        ATTRIBUTE = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        CREATE_BY = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null">
+        MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null">
+        MODIFY_DATE = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.prd.warehouse.entity.InvTransactionType">
+    update inv_transaction_type
+    set TRANS_TYPE = #{transType,jdbcType=VARCHAR},
+      TRANS_no = #{transNo,jdbcType=VARCHAR},
+      TRANS_NAME = #{transName,jdbcType=VARCHAR},
+      TRANS_FLOW = #{transFlow,jdbcType=VARCHAR},
+      USER_DEFINE_FLAG = #{userDefineFlag,jdbcType=VARCHAR},
+      ENABLE_FLAG = #{enableFlag,jdbcType=VARCHAR},
+      DISABLE_DATE = #{disableDate,jdbcType=TIMESTAMP},
+      ATTRIBUTE = #{attribute,jdbcType=VARCHAR},
+      CREATE_BY = #{createBy,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
+      MODIFY_DATE = #{modifyDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
