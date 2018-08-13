@@ -24,12 +24,8 @@ import java.io.IOException;
 @RequestMapping("/dispatch")
 public class DispatchController {
 
-
     @Autowired
     private DispatchService dispatchService;
-
-
-
 
     @PostMapping(value = "/input", produces = "application/json;charset=UTF-8")
     @CrossOrigin(allowCredentials = "false")
@@ -47,9 +43,7 @@ public class DispatchController {
         }
         String formID = paramJson.get("inputID").textValue();
 
-        //return dispatchService.inputForm(formID);
         return new DispatchServiceDecorator(dispatchService).inputForm(formID);
-
     }
 
     @PostMapping(value = "/output", produces = "application/json;charset=UTF-8")
@@ -64,8 +58,7 @@ public class DispatchController {
         }
         String formID = paramJson.get("outputID").textValue();
 
-        return dispatchService.outputForm(formID);
-        //studentService.findStudentPasswordById(params, request, response);
+        return new DispatchServiceDecorator(dispatchService).outputForm(formID);
     }
 
     @PostMapping(value = "/transfer", produces = "application/json;charset=UTF-8")
@@ -81,8 +74,7 @@ public class DispatchController {
         }
         String formID = paramJson.get("transferID").textValue();
 
-        return dispatchService.transferForm(formID);
-        //studentService.findStudentPasswordById(params, request, response);
+        return new DispatchServiceDecorator(dispatchService).transferForm(formID);
     }
 
 
@@ -90,6 +82,5 @@ public class DispatchController {
     @CrossOrigin(allowCredentials = "false")
     public ResponseDTO<String> test(HttpServletRequest request, HttpServletResponse response) {
         return ResponseDTO.success(MessageDTO.INPUT_SUCCESS,"lvxz");
-        //studentService.findStudentPasswordById(params, request, response);
     }
 }

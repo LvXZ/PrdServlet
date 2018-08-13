@@ -51,12 +51,54 @@ public class DispatchServiceDecorator implements DispatchService {
 
     @Override
     public ResponseDTO<String> outputForm(String formID) {
-        return null;
+        ResponseDTO<String> responseDTO = null;
+
+        boolean shouldRollback = false;
+        try {
+            beginTransaction();
+
+
+            responseDTO = dispatchService.outputForm(formID);
+
+
+        } catch (Exception e) {
+            shouldRollback = true;
+            throw e;
+        } finally {
+            if (shouldRollback) {
+                rollback();
+                return responseDTO;
+            } else {
+                commit();
+                return responseDTO;
+            }
+        }
     }
 
     @Override
     public ResponseDTO<String> transferForm(String formID) {
-        return null;
+        ResponseDTO<String> responseDTO = null;
+
+        boolean shouldRollback = false;
+        try {
+            beginTransaction();
+
+
+            responseDTO = dispatchService.transferForm(formID);
+
+
+        } catch (Exception e) {
+            shouldRollback = true;
+            throw e;
+        } finally {
+            if (shouldRollback) {
+                rollback();
+                return responseDTO;
+            } else {
+                commit();
+                return responseDTO;
+            }
+        }
     }
 
 

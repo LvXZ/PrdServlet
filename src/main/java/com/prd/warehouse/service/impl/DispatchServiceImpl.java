@@ -48,8 +48,6 @@ public class DispatchServiceImpl implements DispatchService {
     @Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.DEFAULT,timeout=36000,rollbackFor=Exception.class)
     public ResponseDTO<String> inputForm(String formID) {
 
-        logger.debug("----inputForm----");
-
         InvMoveOrder getInvMoveOrder = invMoveOrderDAO.selectInvMoveOrderById(formID);
         String checkFlowResult = checkTransactionFlow(getInvMoveOrder,"I");
         if(checkFlowResult != null){
@@ -78,8 +76,6 @@ public class DispatchServiceImpl implements DispatchService {
     @Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.DEFAULT,timeout=36000,rollbackFor=Exception.class)
     public ResponseDTO<String> outputForm(String formID) {
 
-        logger.debug("----outputForm----");
-
         InvMoveOrder getInvMoveOrder = invMoveOrderDAO.selectInvMoveOrderById(formID);
         String checkFlowResult = checkTransactionFlow(getInvMoveOrder,"O");
         if(checkFlowResult != null){
@@ -106,8 +102,6 @@ public class DispatchServiceImpl implements DispatchService {
 
     @Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.DEFAULT,timeout=36000,rollbackFor=Exception.class)
     public ResponseDTO<String> transferForm(String formID) {
-
-        logger.debug("----transferForm----");
 
         InvMoveOrder getInvMoveOrder = invMoveOrderDAO.selectInvMoveOrderById(formID);
         String checkFlowResult = checkTransactionFlow(getInvMoveOrder,"T");

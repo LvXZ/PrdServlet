@@ -38,9 +38,7 @@
             <div class="col-md-12 column">
                 <div class="alert alert-dismissable alert-success" id="alert_id">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <h4>
-                        <label id="label_id"></label>
-                    </h4>
+                    <h4><label id="label_id"></label></h4>
                 </div>
             </div>
         </div>
@@ -68,13 +66,16 @@
                 data: JSON.stringify(objJson),
                 async:true,
                 success: function (response) {
-                    if(response.code == 1){
-                        $('#alert_id').show();
+                    /*if(response.code == 1){
+                        $('#alert_id').hide();
                         $('#label_id').html(response.msg);
-
+                        $('#alert_id').show();
                     } else {
                         alert(response.msg);
-                    }
+                    }*/
+                    $('#alert_id').hide();
+                    $('#label_id').html(response.msg);
+                    $('#alert_id').show();
                 },
                 error: function (){
                     alert("访问失败，请检查网络、路径......");
@@ -85,9 +86,9 @@
 
         function outputForm(){
 
-            var inputID = $('#output_id').val();
+            var outputID = $('#output_id').val();
             var objJson = {
-                "outputID":inputID
+                "outputID":outputID
             };
 
             $.ajax({
@@ -98,13 +99,9 @@
                 data: JSON.stringify(objJson),
                 async:true,
                 success: function (response) {
-                    if(response.code == 1){
-                        $('#alert_id').show();
-                        $('#label_id').html(response.msg);
-
-                    } else {
-                        alert(response.msg);
-                    }
+                    $('#alert_id').hide();
+                    $('#label_id').html(response.msg);
+                    $('#alert_id').show();
                 },
                 error: function (){
                     alert("访问失败，请检查网络、路径......");
@@ -115,9 +112,9 @@
 
         function transferForm(){
 
-            var inputID = $('#transfer_id').val();
+            var transferID = $('#transfer_id').val();
             var objJson = {
-                "transferID":inputID
+                "transferID":transferID
             };
 
             $.ajax({
@@ -128,13 +125,9 @@
                 data: JSON.stringify(objJson),
                 async:true,
                 success: function (response) {
-                    if(response.code == 1){
-                        $('#alert_id').show();
-                        $('#label_id').html(response.msg);
-
-                    } else {
-                        alert(response.msg);
-                    }
+                    $('#alert_id').hide();
+                    $('#label_id').html(response.msg);
+                    $('#alert_id').show();
                 },
                 error: function (){
                     alert("访问失败，请检查网络、路径......");
