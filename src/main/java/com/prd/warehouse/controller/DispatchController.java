@@ -1,17 +1,13 @@
 package com.prd.warehouse.controller;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.prd.warehouse.dto.MessageDTO;
 import com.prd.warehouse.dto.ResponseDTO;
 import com.prd.warehouse.service.DispatchService;
-import com.prd.warehouse.service.decorator.DispatchServiceDecorator;
+import com.prd.warehouse.service.decorator.DispatchDecorator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 /**
  * @ClassName:
@@ -32,7 +28,7 @@ public class DispatchController {
     public ResponseDTO<String> inputForm(@RequestBody String params, HttpServletRequest request, HttpServletResponse response) {
 
         response.setHeader("Access-Control-Allow-Methods", "POST");
-        return new DispatchServiceDecorator(dispatchService).inputForm(params);
+        return new DispatchDecorator(dispatchService).inputForm(params);
     }
 
     @PostMapping(value = "/output", produces = "application/json;charset=UTF-8")
@@ -40,7 +36,7 @@ public class DispatchController {
     public ResponseDTO<String> outputForm(@RequestBody String params, HttpServletRequest request, HttpServletResponse response) {
 
         response.setHeader("Access-Control-Allow-Methods", "POST");
-        return new DispatchServiceDecorator(dispatchService).outputForm(params);
+        return new DispatchDecorator(dispatchService).outputForm(params);
     }
 
     @PostMapping(value = "/transfer", produces = "application/json;charset=UTF-8")
@@ -48,7 +44,7 @@ public class DispatchController {
     public ResponseDTO<String> transferForm(@RequestBody String params, HttpServletRequest request, HttpServletResponse response) {
 
         response.setHeader("Access-Control-Allow-Methods", "POST");
-        return new DispatchServiceDecorator(dispatchService).transferForm(params);
+        return new DispatchDecorator(dispatchService).transferForm(params);
     }
 
 }

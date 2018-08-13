@@ -16,13 +16,13 @@ import java.io.IOException;
  * @Author: lvxz
  * @Date: 2018-08-13  10:16
  */
-public class DispatchServiceDecorator implements DispatchService {
+public class DispatchDecorator implements DispatchService {
 
 
     //构造decorator对象
     private final DispatchService dispatchService;
 
-    public DispatchServiceDecorator(DispatchService dispatchService) {
+    public DispatchDecorator(DispatchService dispatchService) {
         this.dispatchService = dispatchService;
     }
 

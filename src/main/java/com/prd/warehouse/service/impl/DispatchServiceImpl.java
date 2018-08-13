@@ -138,7 +138,6 @@ public class DispatchServiceImpl implements DispatchService {
         }
         //sqlSession.rollback();
         return ResponseDTO.fail(MessageDTO.TRANSFER_FAIL);
-
     }
 
 

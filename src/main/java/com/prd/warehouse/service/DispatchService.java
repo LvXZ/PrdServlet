@@ -27,14 +27,12 @@ public interface DispatchService {
      */
     ResponseDTO<String> outputForm(String formID);
 
-
     /**
+     * 订单验证并转移库房
      *
      * @param formID
      * @return
      */
     ResponseDTO<String> transferForm(String formID);
-
-
 
 }

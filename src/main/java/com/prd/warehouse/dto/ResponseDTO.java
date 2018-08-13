@@ -23,7 +23,6 @@ public class ResponseDTO<T> {
         this.data = data;
     }
 
-
     public static <T> ResponseDTO<T> success(MessageDTO messageDTO){
         return new ResponseDTO<T>(messageDTO);
     }
@@ -37,10 +36,6 @@ public class ResponseDTO<T> {
         this.msg = messageDTO.getMsg();
         this.data = data;
     }
-
-
-
-
 
 
     public static <T> ResponseDTO<T> fail(String msg){
