@@ -1,7 +1,14 @@
 package com.prd.warehouse.service.decorator;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.prd.warehouse.dto.MessageDTO;
 import com.prd.warehouse.dto.ResponseDTO;
 import com.prd.warehouse.service.DispatchService;
+import com.prd.warehouse.util.ServletUtil;
+
+import java.io.IOException;
+
 
 /**
  * @ClassName:
@@ -20,29 +27,31 @@ public class DispatchServiceDecorator implements DispatchService {
     }
 
     @Override
-    public ResponseDTO<String> inputForm(String formID) {
+    public ResponseDTO<String> inputForm(String params) {
+
+        String formID = parseJSON(params);
 
         ResponseDTO<String> responseDTO = null;
+
+
+        if(!ServletUtil.shouldWarehouse){//查看模块是否激活
+            return ResponseDTO.fail(MessageDTO.MODULE_WAREHOUSE);
+        }
 
         boolean shouldRollback = false;
         try {
             beginTransaction();
-
-
             responseDTO = dispatchService.inputForm(formID);
-
-
         } catch (Exception e) {
             shouldRollback = true;
             throw e;
         } finally {
             if (shouldRollback) {
                 rollback();
-                return responseDTO;
             } else {
                 commit();
-                return responseDTO;
             }
+            return responseDTO;
         }
 
 
@@ -50,8 +59,17 @@ public class DispatchServiceDecorator implements DispatchService {
     }
 
     @Override
-    public ResponseDTO<String> outputForm(String formID) {
+    public ResponseDTO<String> outputForm(String params) {
+        String formID = parseJSON(params);
+
         ResponseDTO<String> responseDTO = null;
+
+
+        if(!ServletUtil.shouldWarehouse){//查看模块是否激活
+            return ResponseDTO.fail(MessageDTO.MODULE_WAREHOUSE);
+        }
+
+
 
         boolean shouldRollback = false;
         try {
@@ -67,17 +85,27 @@ public class DispatchServiceDecorator implements DispatchService {
         } finally {
             if (shouldRollback) {
                 rollback();
-                return responseDTO;
             } else {
                 commit();
-                return responseDTO;
             }
+            return responseDTO;
         }
     }
 
     @Override
-    public ResponseDTO<String> transferForm(String formID) {
+    public ResponseDTO<String> transferForm(String params) {
+
+        String formID = parseJSON(params);
+
         ResponseDTO<String> responseDTO = null;
+
+
+        if(!ServletUtil.shouldWarehouse){//查看模块是否激活
+            return ResponseDTO.fail(MessageDTO.MODULE_WAREHOUSE);
+        }
+
+
+
 
         boolean shouldRollback = false;
         try {
@@ -93,14 +121,26 @@ public class DispatchServiceDecorator implements DispatchService {
         } finally {
             if (shouldRollback) {
                 rollback();
-                return responseDTO;
             } else {
                 commit();
-                return responseDTO;
             }
+            return responseDTO;
         }
     }
 
+    private String parseJSON(String params){
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode paramJson = null;
+        try {
+            paramJson = objectMapper.readTree(params);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String formID = paramJson.get("formID").textValue();
+        return formID;
+
+    }
 
     private void commit() {
         System.out.println("commit");

@@ -41,6 +41,12 @@ mybatis:
     mapUnderscoreToCamelCase: true
     useColumnLabel: true
 
-
 logging:
   config: classpath:config/logback.xml
+
+prdservlet:
+  configuration:
+    user: true
+    warehouse: true
+    economy: true
+

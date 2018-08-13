@@ -14,18 +14,23 @@ public class MessageDTO {
     private String msg;
 
     //general exception
-    public static MessageDTO DATEBASE_ERROR = new MessageDTO(PropertiesUtil.getInt("database.error.code"),PropertiesUtil.getString("database.error.msg"));
-    public static MessageDTO SERVLET_ERROR = new MessageDTO(PropertiesUtil.getInt("servlet.error.code"),PropertiesUtil.getString("servlet.error.msg"));
+    public final static MessageDTO DATEBASE_ERROR = new MessageDTO(PropertiesUtil.getInt("database.error.code"),PropertiesUtil.getString("database.error.msg"));
+    public final static MessageDTO SERVLET_ERROR = new MessageDTO(PropertiesUtil.getInt("servlet.error.code"),PropertiesUtil.getString("servlet.error.msg"));
+
+    //general module instruction
+    public final static MessageDTO MODULE_WAREHOUSE = new MessageDTO(-7,"库房模块关闭，无法启动响应");
+
+
 
     //input
-    public static MessageDTO INPUT_SUCCESS = new MessageDTO(1, PropertiesUtil.getString("dispatch.input.success"));
-    public static MessageDTO INPUT_FAIL = new MessageDTO(0,PropertiesUtil.getString("dispatch.input.failure"));
+    public final static MessageDTO INPUT_SUCCESS = new MessageDTO(1, PropertiesUtil.getString("dispatch.input.success"));
+    public final static MessageDTO INPUT_FAIL = new MessageDTO(0,PropertiesUtil.getString("dispatch.input.failure"));
     //output
-    public static MessageDTO OUTPUT_SUCCESS = new MessageDTO(1, PropertiesUtil.getString("dispatch.output.success"));
-    public static MessageDTO OUTPUT_FAIL = new MessageDTO(0,PropertiesUtil.getString("dispatch.output.failure"));
+    public final static MessageDTO OUTPUT_SUCCESS = new MessageDTO(1, PropertiesUtil.getString("dispatch.output.success"));
+    public final static MessageDTO OUTPUT_FAIL = new MessageDTO(0,PropertiesUtil.getString("dispatch.output.failure"));
     //transfer
-    public static MessageDTO TRANSFER_SUCCESS = new MessageDTO(1, PropertiesUtil.getString("dispatch.transfer.success"));
-    public static MessageDTO TRANSFER_FAIL = new MessageDTO(0,PropertiesUtil.getString("dispatch.transfer.failure"));
+    public final static MessageDTO TRANSFER_SUCCESS = new MessageDTO(1, PropertiesUtil.getString("dispatch.transfer.success"));
+    public final static MessageDTO TRANSFER_FAIL = new MessageDTO(0,PropertiesUtil.getString("dispatch.transfer.failure"));
 
 
     private MessageDTO(int code, String msg) {

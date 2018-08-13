@@ -31,56 +31,24 @@ public class DispatchController {
     @CrossOrigin(allowCredentials = "false")
     public ResponseDTO<String> inputForm(@RequestBody String params, HttpServletRequest request, HttpServletResponse response) {
 
-
-        //DispatchService proxy = new DispatchServiceProxy(new DispatchServiceImpl());
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode paramJson = null;
-        try {
-            paramJson = objectMapper.readTree(params);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String formID = paramJson.get("inputID").textValue();
-
-        return new DispatchServiceDecorator(dispatchService).inputForm(formID);
+        response.setHeader("Access-Control-Allow-Methods", "POST");
+        return new DispatchServiceDecorator(dispatchService).inputForm(params);
     }
 
     @PostMapping(value = "/output", produces = "application/json;charset=UTF-8")
     @CrossOrigin(allowCredentials = "false")
     public ResponseDTO<String> outputForm(@RequestBody String params, HttpServletRequest request, HttpServletResponse response) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode paramJson = null;
-        try {
-            paramJson = objectMapper.readTree(params);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String formID = paramJson.get("outputID").textValue();
 
-        return new DispatchServiceDecorator(dispatchService).outputForm(formID);
+        response.setHeader("Access-Control-Allow-Methods", "POST");
+        return new DispatchServiceDecorator(dispatchService).outputForm(params);
     }
 
     @PostMapping(value = "/transfer", produces = "application/json;charset=UTF-8")
     @CrossOrigin(allowCredentials = "false")
     public ResponseDTO<String> transferForm(@RequestBody String params, HttpServletRequest request, HttpServletResponse response) {
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode paramJson = null;
-        try {
-            paramJson = objectMapper.readTree(params);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String formID = paramJson.get("transferID").textValue();
-
-        return new DispatchServiceDecorator(dispatchService).transferForm(formID);
+        response.setHeader("Access-Control-Allow-Methods", "POST");
+        return new DispatchServiceDecorator(dispatchService).transferForm(params);
     }
 
-
-    @PostMapping(value = "/test", produces = "application/json;charset=UTF-8")
-    @CrossOrigin(allowCredentials = "false")
-    public ResponseDTO<String> test(HttpServletRequest request, HttpServletResponse response) {
-        return ResponseDTO.success(MessageDTO.INPUT_SUCCESS,"lvxz");
-    }
 }
