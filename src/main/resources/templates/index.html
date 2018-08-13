@@ -16,17 +16,6 @@
     <div class="container">
         <div class="row clearfix">
             <div class="col-md-12 column">
-                <div class="alert alert-dismissable alert-success" id="alert_id">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <h4>
-                        <label id="label_id"></label>
-                    </h4>
-                </div>
-            </div>
-        </div>
-
-        <div class="row clearfix">
-            <div class="col-md-12 column">
                 <div role="form">
                     <div class="form-group">
                         <label for="input_id">input</label><input class="form-control" id="input_id" type="text" />
@@ -41,6 +30,17 @@
                         <button type="button" class="btn btn-default" onclick="transferForm()">Submit</button>
                     </div>
 
+                </div>
+            </div>
+        </div>
+
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <div class="alert alert-dismissable alert-success" id="alert_id">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4>
+                        <label id="label_id"></label>
+                    </h4>
                 </div>
             </div>
         </div>
@@ -87,12 +87,12 @@
 
             var inputID = $('#output_id').val();
             var objJson = {
-                "inputID":inputID
+                "outputID":inputID
             };
 
             $.ajax({
                 type:"POST",
-                url: "/dispatch/input",
+                url: "/dispatch/output",
                 contentType: "application/json;charset=utf-8",
                 dataType: "json",
                 data: JSON.stringify(objJson),
@@ -117,12 +117,12 @@
 
             var inputID = $('#transfer_id').val();
             var objJson = {
-                "inputID":inputID
+                "transferID":inputID
             };
 
             $.ajax({
                 type:"POST",
-                url: "/dispatch/input",
+                url: "/dispatch/transfer",
                 contentType: "application/json;charset=utf-8",
                 dataType: "json",
                 data: JSON.stringify(objJson),

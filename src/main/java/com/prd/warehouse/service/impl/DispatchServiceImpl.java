@@ -1,6 +1,7 @@
 package com.prd.warehouse.service.impl;
 
 import com.prd.warehouse.dao.*;
+import com.prd.warehouse.dto.MessageDTO;
 import com.prd.warehouse.dto.ResponseDTO;
 import com.prd.warehouse.entity.*;
 import com.prd.warehouse.service.DispatchService;
@@ -67,14 +68,14 @@ public class DispatchServiceImpl implements DispatchService {
         String checkExecuteResult = executeInput(getInvMoveOrder);
         if(checkExecuteResult == null){
             //sqlSession.commit();
-            return ResponseDTO.success("入库成功");
+            return ResponseDTO.success(MessageDTO.INPUT_SUCCESS);
         }
         //sqlSession.rollback();
         return ResponseDTO.fail(checkExecuteResult);
 
     }
 
-
+    @Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.DEFAULT,timeout=36000,rollbackFor=Exception.class)
     public ResponseDTO<String> outputForm(String formID) {
 
         logger.debug("----outputForm----");
@@ -97,12 +98,13 @@ public class DispatchServiceImpl implements DispatchService {
         String checkExecuteResult = executeOutput(getInvMoveOrder);
         if(checkExecuteResult == null){
             //sqlSession.commit();
-            return ResponseDTO.success("出库成功");
+            return ResponseDTO.success(MessageDTO.OUTPUT_SUCCESS);
         }
         //sqlSession.rollback();
         return ResponseDTO.fail(checkExecuteResult);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.DEFAULT,timeout=36000,rollbackFor=Exception.class)
     public ResponseDTO<String> transferForm(String formID) {
 
         logger.debug("----transferForm----");
@@ -136,12 +138,12 @@ public class DispatchServiceImpl implements DispatchService {
             String checkExecuteInResult = executeInput(getInvMoveOrder);
             if(checkExecuteInResult == null){
                 //sqlSession.commit();
-                return ResponseDTO.success("转移成功");
+                return ResponseDTO.success(MessageDTO.TRANSFER_SUCCESS);
             }
 
         }
         //sqlSession.rollback();
-        return ResponseDTO.fail("转移失败");
+        return ResponseDTO.fail(MessageDTO.TRANSFER_FAIL);
 
     }
 

@@ -5,8 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.prd.warehouse.dto.MessageDTO;
 import com.prd.warehouse.dto.ResponseDTO;
 import com.prd.warehouse.service.DispatchService;
-import com.prd.warehouse.service.impl.DispatchServiceImpl;
-import com.prd.warehouse.service.proxy.DispatchServiceProxy;
+import com.prd.warehouse.service.decorator.DispatchServiceDecorator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,12 +29,14 @@ public class DispatchController {
     private DispatchService dispatchService;
 
 
+
+
     @PostMapping(value = "/input", produces = "application/json;charset=UTF-8")
     @CrossOrigin(allowCredentials = "false")
     public ResponseDTO<String> inputForm(@RequestBody String params, HttpServletRequest request, HttpServletResponse response) {
 
 
-        DispatchService proxy = new DispatchServiceProxy(new DispatchServiceImpl());
+        //DispatchService proxy = new DispatchServiceProxy(new DispatchServiceImpl());
 
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode paramJson = null;
@@ -46,7 +47,8 @@ public class DispatchController {
         }
         String formID = paramJson.get("inputID").textValue();
 
-        return proxy.inputForm(formID);
+        //return dispatchService.inputForm(formID);
+        return new DispatchServiceDecorator(dispatchService).inputForm(formID);
 
     }
 

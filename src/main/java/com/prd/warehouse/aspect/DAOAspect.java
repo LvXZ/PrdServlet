@@ -24,7 +24,7 @@ public class DAOAspect {
     //选择logger日志进行输出
     private final static Logger logger = LoggerFactory.getLogger(DAOAspect.class);
 
-    @Pointcut("execution(public * com.prd.warehouse.dao.*.*(..))")
+    @Pointcut("execution(public * com.prd.*.dao.*.*(..))")
     public void daoFlag() {
     }
 

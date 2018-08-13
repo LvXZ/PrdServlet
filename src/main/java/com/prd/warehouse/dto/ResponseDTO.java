@@ -13,38 +13,34 @@ public class ResponseDTO<T> {
     private String msg;
     private T data;
 
-    /**
-     * success
-     * @param data
-     * @param <T>
-     * @return
-     */
+
     public static <T> ResponseDTO<T> success(T data){
         return new ResponseDTO<T>(data);
     }
-
     private ResponseDTO(T data) {
         this.code = 1;
         this.msg = "success";
         this.data = data;
     }
 
-    /**
-     *
-     * @param messageDTO
-     * @param data
-     * @param <T>
-     * @return
-     */
+
+    public static <T> ResponseDTO<T> success(MessageDTO messageDTO){
+        return new ResponseDTO<T>(messageDTO);
+    }
+
+
     public static <T> ResponseDTO<T> success(MessageDTO messageDTO,T data){
         return new ResponseDTO<T>(messageDTO,data);
     }
-
     private ResponseDTO(MessageDTO messageDTO,T data) {
         this.code = messageDTO.getCode();
         this.msg = messageDTO.getMsg();
         this.data = data;
     }
+
+
+
+
 
 
     public static <T> ResponseDTO<T> fail(String msg){
@@ -65,7 +61,6 @@ public class ResponseDTO<T> {
     public static <T> ResponseDTO<T> fail(MessageDTO messageDTO){
         return new ResponseDTO<T>(messageDTO);
     }
-
     private ResponseDTO(MessageDTO messageDTO) {
         if(messageDTO == null){
             return;

@@ -9,8 +9,12 @@ import java.util.Properties;
 
 public class PropertiesUtil {
 
-    public static String getProperty(String key) {
+    public static String getString(String key) {
         return PropertiesConfigure.getProperty(key);
+    }
+
+    public static int getInt(String key) {
+        return Integer.valueOf(PropertiesConfigure.getProperty(key));
     }
 
     private static class PropertiesConfigure {
@@ -27,7 +31,7 @@ public class PropertiesUtil {
 
         public static String getProperty(String key) {
             return properties.getProperty(key);
-
         }
+
     }
 }

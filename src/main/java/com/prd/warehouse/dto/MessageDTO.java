@@ -14,18 +14,18 @@ public class MessageDTO {
     private String msg;
 
     //general exception
-    public static MessageDTO SERVER_ERROR = new MessageDTO(-505,"server_error");
-    //public static MessageDTO SUCCESS = new MessageDTO(1,"success");
+    public static MessageDTO DATEBASE_ERROR = new MessageDTO(PropertiesUtil.getInt("database.error.code"),PropertiesUtil.getString("database.error.msg"));
+    public static MessageDTO SERVLET_ERROR = new MessageDTO(PropertiesUtil.getInt("servlet.error.code"),PropertiesUtil.getString("servlet.error.msg"));
 
-    //login
-    //public static MessageDTO LOGIN_SUCCESS = new MessageDTO(-505,"server_error");
-    public static MessageDTO LOGIN_FAIL_1 = new MessageDTO(-101,PropertiesUtil.getProperty("login.failure.msg"));
-    public static MessageDTO LOGIN_FAIL_2 = new MessageDTO(-102,"登录失败，用户不存在");
-    public static MessageDTO LOGIN_FAIL_3 = new MessageDTO(-103,"登录失败，你的账户已被冻结");
-
-
-    public static MessageDTO INPUT_SUCCESS = new MessageDTO(1, PropertiesUtil.getProperty("login.success.msg"));
-    public static MessageDTO INPUT_FAIL = new MessageDTO(-1,"入库失败");
+    //input
+    public static MessageDTO INPUT_SUCCESS = new MessageDTO(1, PropertiesUtil.getString("dispatch.input.success"));
+    public static MessageDTO INPUT_FAIL = new MessageDTO(0,PropertiesUtil.getString("dispatch.input.failure"));
+    //output
+    public static MessageDTO OUTPUT_SUCCESS = new MessageDTO(1, PropertiesUtil.getString("dispatch.output.success"));
+    public static MessageDTO OUTPUT_FAIL = new MessageDTO(0,PropertiesUtil.getString("dispatch.output.failure"));
+    //transfer
+    public static MessageDTO TRANSFER_SUCCESS = new MessageDTO(1, PropertiesUtil.getString("dispatch.transfer.success"));
+    public static MessageDTO TRANSFER_FAIL = new MessageDTO(0,PropertiesUtil.getString("dispatch.transfer.failure"));
 
 
     private MessageDTO(int code, String msg) {
