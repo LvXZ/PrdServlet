@@ -1,4 +1,4 @@
-package com.prd.warehouse.controller;
+package com.prd.html;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +21,11 @@ public class HtmlController {
     @RequestMapping("/index")
     public String index2Page() {
         return "index.html";
+    }
+
+    @RequestMapping("/login")
+    public String loginPage() {
+        return "login.html";
     }
 
 }

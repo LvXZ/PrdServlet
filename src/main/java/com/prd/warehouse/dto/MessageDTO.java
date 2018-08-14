@@ -21,16 +21,21 @@ public class MessageDTO {
     public final static MessageDTO MODULE_WAREHOUSE = new MessageDTO(-7,"库房模块关闭，无法启动响应");
 
 
+    //login
+    public final static MessageDTO LOGIN_SUCCESS = new MessageDTO(1,"登录成功");
+    public final static MessageDTO LOGIN_FAIL_1 = new MessageDTO(1,"登录失败,密码错误");
+    public final static MessageDTO LOGIN_FAIL_2 = new MessageDTO(1,"账户已被冻结");
+    public final static MessageDTO LOGIN_FAIL_3 = new MessageDTO(1,"账户不存在");
 
     //input
     public final static MessageDTO INPUT_SUCCESS = new MessageDTO(1, PropertiesUtil.getString("dispatch.input.success"));
-    public final static MessageDTO INPUT_FAIL = new MessageDTO(0,PropertiesUtil.getString("dispatch.input.failure"));
+    public final static MessageDTO INPUT_FAIL = new MessageDTO(0,PropertiesUtil.getString("dispatch.input.fail"));
     //output
     public final static MessageDTO OUTPUT_SUCCESS = new MessageDTO(1, PropertiesUtil.getString("dispatch.output.success"));
-    public final static MessageDTO OUTPUT_FAIL = new MessageDTO(0,PropertiesUtil.getString("dispatch.output.failure"));
+    public final static MessageDTO OUTPUT_FAIL = new MessageDTO(0,PropertiesUtil.getString("dispatch.output.fail"));
     //transfer
     public final static MessageDTO TRANSFER_SUCCESS = new MessageDTO(1, PropertiesUtil.getString("dispatch.transfer.success"));
-    public final static MessageDTO TRANSFER_FAIL = new MessageDTO(0,PropertiesUtil.getString("dispatch.transfer.failure"));
+    public final static MessageDTO TRANSFER_FAIL = new MessageDTO(0,PropertiesUtil.getString("dispatch.transfer.fail"));
 
 
     private MessageDTO(int code, String msg) {
