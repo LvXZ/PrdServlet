@@ -46,7 +46,7 @@ logging:
 
 prdservlet:
   configuration:
-    user: true
-    warehouse: true
-    economy: true
+    module-user: true
+    module-warehouse: true
+    module-economy: true
 

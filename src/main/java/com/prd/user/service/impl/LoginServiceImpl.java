@@ -51,7 +51,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public int findEmployeeExistByID(Employee employee) {
+    public boolean findEmployeeExistByID(Employee employee) {
         Employee getEmployee = employeeDAO.selectPasswordByID(employee.getEmployeeId());
         if(getEmployee != null){
 
@@ -59,17 +59,17 @@ public class LoginServiceImpl implements LoginService {
 
                 if(employee.getEnableStatus() > 1){
 
-                    return 1;
+                    return true;
 
                 }else{
-                    return 0;
+                    return false;
                 }
 
             }else{
 
-                return 0;
+                return false;
             }
         }
-        return 0;
+        return false;
     }
 }

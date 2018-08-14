@@ -13,13 +13,10 @@ import java.util.Map;
  * @Date: 2018-08-13  13:56
  */
 
-@Component
-@ConfigurationProperties(prefix = "prdservlet")
 public class ServletUtil {
 
-    public static Map<String, String> configuration = new HashMap<>();
-    public final static boolean shouldWarehouse = Boolean.valueOf(configuration.get("warehouse"));
-    public final static boolean shouldUser = Boolean.valueOf(configuration.get("user"));
-    public final static boolean shouldEconomy = Boolean.valueOf(configuration.get("economy"));
+    public final static boolean shouldWarehouse = YMLUtil.configuration.get("module-user");
+    public final static boolean shouldUser = YMLUtil.configuration.get("module-warehouse");
+    public final static boolean shouldEconomy = YMLUtil.configuration.get("module-economy");
 
 }

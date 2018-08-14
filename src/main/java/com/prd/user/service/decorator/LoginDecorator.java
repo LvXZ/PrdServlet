@@ -49,9 +49,9 @@ public class LoginDecorator implements LoginService {
     }
 
     @Override
-    public int findEmployeeExistByID(Employee employee) {
+    public boolean findEmployeeExistByID(Employee employee) {
 
-        int flag = 0;
+        boolean flag = false;
         boolean shouldRollback = false;
         try {
             beginTransaction();

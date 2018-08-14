@@ -16,7 +16,7 @@ public interface LoginService {
     ResponseDTO<Employee> findPasswordById(Employee employee);
 
 
-    int findEmployeeExistByID(Employee employee);
+    boolean findEmployeeExistByID(Employee employee);
 
 
 
