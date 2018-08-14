@@ -42,16 +42,16 @@ public class DispatchDecorator implements DispatchService {
         ResponseDTO<String> responseDTO = null;
 
 
-        if(!ServletUtil.shouldWarehouse){//查看模块是否激活
+        if(!ServletUtil.SHOULD_WAREHOUSE){//查看模块是否激活
             return ResponseDTO.fail(MessageDTO.MODULE_WAREHOUSE);
         }
 
         boolean user_flag = false;
-        if(!ServletUtil.shouldUser){
+        if(!ServletUtil.SHOULD_USER){
             user_flag = new LoginDecorator(loginService).findEmployeeExistByID(employee);
         }
 
-        if(ServletUtil.shouldUser^user_flag){
+        if(ServletUtil.SHOULD_USER^user_flag){
 
             boolean shouldRollback = false;
             try {
@@ -85,7 +85,7 @@ public class DispatchDecorator implements DispatchService {
         ResponseDTO<String> responseDTO = null;
 
 
-        if(!ServletUtil.shouldWarehouse){//查看模块是否激活
+        if(!ServletUtil.SHOULD_WAREHOUSE){//查看模块是否激活
             return ResponseDTO.fail(MessageDTO.MODULE_WAREHOUSE);
         }
 
@@ -120,7 +120,7 @@ public class DispatchDecorator implements DispatchService {
         ResponseDTO<String> responseDTO = null;
 
 
-        if(!ServletUtil.shouldWarehouse){//查看模块是否激活
+        if(!ServletUtil.SHOULD_WAREHOUSE){//查看模块是否激活
             return ResponseDTO.fail(MessageDTO.MODULE_WAREHOUSE);
         }
 

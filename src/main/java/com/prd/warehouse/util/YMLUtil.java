@@ -15,12 +15,12 @@ import java.util.Map;
 
 
 @Component
-@ConfigurationProperties(prefix = "prdservlet")
+@ConfigurationProperties(prefix = "service-config")
 public class YMLUtil {
 
-    public static Map<String, Boolean> configuration = new HashMap<>();
+    public static Map<String, Boolean> prdservlet = new HashMap<>();
 
-    public static Map<String, Boolean> getConfiguration() {
-        return configuration;
+    public Map<String, Boolean> getPrdservlet() {
+        return prdservlet;
     }
 }

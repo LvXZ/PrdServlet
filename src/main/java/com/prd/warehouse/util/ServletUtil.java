@@ -1,10 +1,7 @@
 package com.prd.warehouse.util;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.prd.warehouse.util.YMLUtil;
 
 /**
  * @ClassName: ServletUtil
@@ -15,8 +12,11 @@ import java.util.Map;
 
 public class ServletUtil {
 
-    public final static boolean shouldWarehouse = YMLUtil.configuration.get("module-user");
-    public final static boolean shouldUser = YMLUtil.configuration.get("module-warehouse");
-    public final static boolean shouldEconomy = YMLUtil.configuration.get("module-economy");
+    /*@Autowired
+    private YMLUtil ymlUtil;*/
+
+    public final static boolean SHOULD_USER = YMLUtil.prdservlet.get("module-user");
+    public final static boolean SHOULD_WAREHOUSE = YMLUtil.prdservlet.get("module-warehouse");
+    public final static boolean SHOULD_ECONOMY = YMLUtil.prdservlet.get("module-economy");
 
 }

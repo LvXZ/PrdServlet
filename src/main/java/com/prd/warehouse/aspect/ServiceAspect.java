@@ -29,7 +29,7 @@ public class ServiceAspect {
     private final static Logger logger = LoggerFactory.getLogger(ServiceAspect.class);
 
 
-    @Pointcut("execution(public * com.prd.warehouse.service.*.*(..))")
+    @Pointcut("execution(public * com.prd.*.service.*.*(..))")
     public void serviceFlag() {
     }
 

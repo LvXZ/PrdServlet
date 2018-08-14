@@ -35,7 +35,7 @@ spring:
     password: 12345678
 
 mybatis:
-  mapper-locations: classpath:mybatis/warehouse/*.xml
+  mapper-locations: classpath:mybatis/*/*.xml
   type-aliases-package: com.prd.*.entity
   configuration:
     mapUnderscoreToCamelCase: true
@@ -44,8 +44,8 @@ mybatis:
 logging:
   config: classpath:config/logback.xml
 
-prdservlet:
-  configuration:
+service-config:
+  prdservlet:
     module-user: true
     module-warehouse: true
     module-economy: true

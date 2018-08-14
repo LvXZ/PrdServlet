@@ -15,7 +15,7 @@
 <body>
     <div class="container">
         <div class="row clearfix">
-            <div class="col-md-12 column">
+            <div class="col-md-8 column">
                 <div role="form">
                     <div class="form-group">
                         <label for="input_id">input</label><input class="form-control" id="input_id" type="text" />
@@ -28,6 +28,18 @@
                     <div class="form-group">
                         <label for="transfer_id">transfer</label><input class="form-control" id="transfer_id" type="text" />
                         <button type="button" class="btn btn-default" onclick="transferForm()">转移</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 column">
+                <div role="form">
+                    <div class="form-group">
+                        <label for="input_id">ID</label><input class="form-control" id="employee_id" type="text" value="150804213"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="output_id">密码</label><input class="form-control" id="password" type="text" value="1234"/>
                     </div>
 
                 </div>
@@ -53,9 +65,13 @@
 
         function inputForm(){
 
-            var inputID = $('#input_id').val();
+            var inputID = $('#input_id').val(),
+                employeeId = $('#employee_id').val(),
+                password = $('#password').val();
             var objJson = {
-                "formID":inputID
+                "formID":inputID,
+                "employeeId":employeeId,
+                "password":password
             };
 
             var URL = "/dispatch/input";
