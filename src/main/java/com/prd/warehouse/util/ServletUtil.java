@@ -1,8 +1,5 @@
 package com.prd.warehouse.util;
 
-
-import com.prd.warehouse.util.YMLUtil;
-
 /**
  * @ClassName: ServletUtil
  * @Description: 系统模块配置--切记篡改本类的任何方法
@@ -11,9 +8,6 @@ import com.prd.warehouse.util.YMLUtil;
  */
 
 public class ServletUtil {
-
-    /*@Autowired
-    private YMLUtil ymlUtil;*/
 
     public final static boolean SHOULD_USER = YMLUtil.prdservlet.get("module-user");
     public final static boolean SHOULD_WAREHOUSE = YMLUtil.prdservlet.get("module-warehouse");

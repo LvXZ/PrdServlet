@@ -25,9 +25,6 @@ import java.math.BigDecimal;
 @Service
 public class DispatchServiceImpl implements DispatchService {
 
-    private final static Logger logger = LoggerFactory.getLogger(DispatchServiceImpl.class);
-
-
     @Autowired
     InvMoveOrderDAO invMoveOrderDAO;
 
@@ -359,6 +356,8 @@ public class DispatchServiceImpl implements DispatchService {
                 if (flag1 != 1 || flag2 != 1) {
                     returnString = "出库失败";
                 }
+            }else{
+                returnString = "出库失败,库存不足";
             }
         }
         return returnString;

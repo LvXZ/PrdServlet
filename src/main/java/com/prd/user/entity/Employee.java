@@ -41,4 +41,14 @@ public class Employee {
     public void setEnableStatus(Integer enableStatus) {
         this.enableStatus = enableStatus;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employeeId=" + employeeId +
+                ", employeeName='" + employeeName + '\'' +
+                ", password='" + password + '\'' +
+                ", enableStatus=" + enableStatus +
+                '}';
+    }
 }

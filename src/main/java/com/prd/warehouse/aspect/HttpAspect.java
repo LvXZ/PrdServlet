@@ -31,7 +31,11 @@ public class HttpAspect {
     public void flag() {
     }
 
-    @Before("flag()")
+    @Pointcut("execution(public * com.prd.html.*.*(..))")
+    public void flag2() {
+    }
+
+    @Before("flag() || flag2()")
     //对文件名下的函数进行调用Before拦截
     public void httpBefore(JoinPoint jP) {
         // 获取开始时间
@@ -55,7 +59,7 @@ public class HttpAspect {
     }
 
     //对文件名下的函数进行结束After拦截
-    @After("flag()")
+    @After("flag() || flag2()")
     public void httpAfter() {
         // 获取结束时间
         long runTime = System.currentTimeMillis();

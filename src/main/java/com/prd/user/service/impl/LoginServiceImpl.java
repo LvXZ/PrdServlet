@@ -50,26 +50,5 @@ public class LoginServiceImpl implements LoginService {
         return ResponseDTO.fail(MessageDTO.LOGIN_FAIL_3);
     }
 
-    @Override
-    public boolean findEmployeeExistByID(Employee employee) {
-        Employee getEmployee = employeeDAO.selectPasswordByID(employee.getEmployeeId());
-        if(getEmployee != null){
 
-            if(getEmployee.getPassword().equals(employee.getPassword())){
-
-                if(employee.getEnableStatus() > 1){
-
-                    return true;
-
-                }else{
-                    return false;
-                }
-
-            }else{
-
-                return false;
-            }
-        }
-        return false;
-    }
 }

@@ -5,6 +5,7 @@ import com.prd.user.service.LoginService;
 import com.prd.warehouse.dto.MessageDTO;
 import com.prd.warehouse.dto.ResponseDTO;
 import com.prd.warehouse.util.ServletUtil;
+import org.springframework.stereotype.Component;
 
 /**
  * @ClassName:
@@ -12,23 +13,21 @@ import com.prd.warehouse.util.ServletUtil;
  * @Author: lvxz
  * @Date: 2018-08-13  16:24
  */
+
 public class LoginDecorator implements LoginService {
 
-    private final LoginService loginService;
+    private LoginService loginService;
 
-    public LoginDecorator(LoginService loginService){
+    public LoginDecorator(LoginService loginService) {
         this.loginService = loginService;
     }
+
 
 
     @Override
     public ResponseDTO<Employee> findPasswordById(Employee employee) {
 
-
-
         ResponseDTO<Employee> responseDTO = null;
-
-
         boolean shouldRollback = false;
         try {
             beginTransaction();
@@ -47,29 +46,6 @@ public class LoginDecorator implements LoginService {
 
 
     }
-
-    @Override
-    public boolean findEmployeeExistByID(Employee employee) {
-
-        boolean flag = false;
-        boolean shouldRollback = false;
-        try {
-            beginTransaction();
-            flag = loginService.findEmployeeExistByID(employee);
-        } catch (Exception e) {
-            shouldRollback = true;
-            throw e;
-        } finally {
-            if (shouldRollback) {
-                rollback();
-            } else {
-                commit();
-            }
-            return flag;
-        }
-    }
-
-
 
     private void commit() {
         System.out.println("commit");

@@ -3,6 +3,7 @@ package com.prd.warehouse.service.decorator;
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.prd.user.api.UserAPI;
 import com.prd.user.entity.Employee;
 import com.prd.user.service.LoginService;
 import com.prd.user.service.decorator.LoginDecorator;
@@ -11,7 +12,10 @@ import com.prd.warehouse.dto.ResponseDTO;
 import com.prd.warehouse.service.DispatchService;
 import com.prd.warehouse.util.ServletUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.io.IOException;
 
 
@@ -21,17 +25,20 @@ import java.io.IOException;
  * @Author: lvxz
  * @Date: 2018-08-13  10:16
  */
+
 public class DispatchDecorator implements DispatchService {
 
-    @Autowired
-    private LoginService loginService;
+
+    /*@Autowired
+    private UserAPI userAPI;*/
 
     //构造decorator对象
-    private final DispatchService dispatchService;
+    private DispatchService dispatchService;
 
     public DispatchDecorator(DispatchService dispatchService) {
         this.dispatchService = dispatchService;
     }
+
 
     @Override
     public ResponseDTO<String> inputForm(String params) {
@@ -46,58 +53,46 @@ public class DispatchDecorator implements DispatchService {
             return ResponseDTO.fail(MessageDTO.MODULE_WAREHOUSE);
         }
 
-        boolean user_flag = false;
-        if(!ServletUtil.SHOULD_USER){
-            user_flag = new LoginDecorator(loginService).findEmployeeExistByID(employee);
-        }
-
-        if(ServletUtil.SHOULD_USER^user_flag){
-
-            boolean shouldRollback = false;
-            try {
-                beginTransaction();
-                responseDTO = dispatchService.inputForm(formID);
-            } catch (Exception e) {
-                shouldRollback = true;
-                throw e;
-            } finally {
-                if (shouldRollback) {
-                    rollback();
-                } else {
-                    commit();
-                }
-                return responseDTO;
-            }
-        }else{
+        /*boolean user_flag = userAPI.findEmployeeExistByID(employee);
+        if(ServletUtil.SHOULD_USER != user_flag){
             return ResponseDTO.fail(MessageDTO.LOGIN_FAIL_3);
+        }*/
+
+
+        boolean shouldRollback = false;
+        try {
+            beginTransaction();
+            responseDTO = dispatchService.inputForm(formID);
+        } catch (Exception e) {
+            shouldRollback = true;
+            throw e;
+        } finally {
+            if (shouldRollback) {
+                rollback();
+            } else {
+                commit();
+            }
+            return responseDTO;
         }
-
-
-
-
 
     }
 
     @Override
     public ResponseDTO<String> outputForm(String params) {
+
         String formID = parseJSON(params);
-
         ResponseDTO<String> responseDTO = null;
-
 
         if(!ServletUtil.SHOULD_WAREHOUSE){//查看模块是否激活
             return ResponseDTO.fail(MessageDTO.MODULE_WAREHOUSE);
         }
 
 
-
         boolean shouldRollback = false;
         try {
             beginTransaction();
 
-
             responseDTO = dispatchService.outputForm(formID);
-
 
         } catch (Exception e) {
             shouldRollback = true;
@@ -116,24 +111,18 @@ public class DispatchDecorator implements DispatchService {
     public ResponseDTO<String> transferForm(String params) {
 
         String formID = parseJSON(params);
-
         ResponseDTO<String> responseDTO = null;
-
 
         if(!ServletUtil.SHOULD_WAREHOUSE){//查看模块是否激活
             return ResponseDTO.fail(MessageDTO.MODULE_WAREHOUSE);
         }
 
 
-
-
         boolean shouldRollback = false;
         try {
             beginTransaction();
 
-
             responseDTO = dispatchService.transferForm(formID);
-
 
         } catch (Exception e) {
             shouldRollback = true;
