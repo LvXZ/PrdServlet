@@ -23,6 +23,7 @@ public class MessageDTO {
 
     //login
     public final static MessageDTO LOGIN_SUCCESS = new MessageDTO(1,"登录成功");
+    public final static MessageDTO LOGIN_FAIL_0 = new MessageDTO(1,"操作员账户验证失败");
     public final static MessageDTO LOGIN_FAIL_1 = new MessageDTO(1,"登录失败,密码错误");
     public final static MessageDTO LOGIN_FAIL_2 = new MessageDTO(1,"账户已被冻结");
     public final static MessageDTO LOGIN_FAIL_3 = new MessageDTO(1,"账户不存在");

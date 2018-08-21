@@ -5,17 +5,10 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.prd.user.api.UserAPI;
 import com.prd.user.entity.Employee;
-import com.prd.user.service.LoginService;
-import com.prd.user.service.decorator.LoginDecorator;
 import com.prd.warehouse.dto.MessageDTO;
 import com.prd.warehouse.dto.ResponseDTO;
 import com.prd.warehouse.service.DispatchService;
 import com.prd.warehouse.util.ServletUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import java.io.IOException;
 
 
@@ -29,16 +22,15 @@ import java.io.IOException;
 public class DispatchDecorator implements DispatchService {
 
 
-    @Autowired
-    private UserAPI userAPI;
-
     //构造decorator对象
-    private DispatchService dispatchService;
+    private final DispatchService dispatchService;
+    //通用用户api
+    private final UserAPI userAPI;
 
-    public DispatchDecorator(DispatchService dispatchService) {
+    public DispatchDecorator(DispatchService dispatchService, UserAPI userAPI) {
         this.dispatchService = dispatchService;
+        this.userAPI = userAPI;
     }
-
 
     @Override
     public ResponseDTO<String> inputForm(String params) {
@@ -55,7 +47,7 @@ public class DispatchDecorator implements DispatchService {
 
         boolean user_flag = userAPI.findEmployeeExistByID(employee);
         if(ServletUtil.SHOULD_USER != user_flag){
-            return ResponseDTO.fail(MessageDTO.LOGIN_FAIL_3);
+            return ResponseDTO.fail(MessageDTO.LOGIN_FAIL_0);
         }
 
 

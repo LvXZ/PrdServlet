@@ -24,13 +24,13 @@ public class UserAPIImpl implements UserAPI {
 
     @Override
     public boolean findEmployeeExistByID(Employee employee) {
-        System.out.println("-------2");
+
         Employee getEmployee = employeeDAO.selectPasswordByID(employee.getEmployeeId());
         if(getEmployee != null){
 
             if(getEmployee.getPassword().equals(employee.getPassword())){
 
-                if(employee.getEnableStatus() > 1){
+                if(getEmployee.getEnableStatus() >= 1){
 
                     return true;
 
