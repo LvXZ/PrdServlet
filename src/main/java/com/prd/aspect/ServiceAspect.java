@@ -42,6 +42,10 @@ public class ServiceAspect {
 
     @AfterReturning(value = "serviceFlag()",returning = "returnValue")
     public void serviceAfterReturning(Object returnValue){
-        logger.info("ResponseDTO={}", returnValue.toString());
+        if(returnValue != null){
+            logger.debug("Object={}", returnValue.toString());
+        }else{
+            logger.debug("null");
+        }
     }
 }
