@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.prd.warehouse.dao.InvMoveOrderDAO">
-  <resultMap id="BaseResultMap" type="com.prd.warehouse.entity.InvMoveOrder">
+<mapper namespace="com.prd.module.warehouse.dao.InvMoveOrderDAO">
+  <resultMap id="BaseResultMap" type="com.prd.module.warehouse.entity.InvMoveOrder">
     <id column="ID" jdbcType="VARCHAR" property="id" />
     <result column="ORDER_STATUS" jdbcType="VARCHAR" property="orderStatus" />
     <result column="ORDER_TYPE" jdbcType="VARCHAR" property="orderType" />
@@ -57,7 +57,7 @@
   </select>
 
 
-  <update id="updateOrderStatusByID" parameterType="com.prd.warehouse.entity.InvMoveOrder">
+  <update id="updateOrderStatusByID" parameterType="com.prd.module.warehouse.entity.InvMoveOrder">
     update inv_move_order
     set ORDER_STATUS = #{orderStatus,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=VARCHAR}
@@ -68,7 +68,7 @@
     delete from inv_move_order
     where ID = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.prd.warehouse.entity.InvMoveOrder">
+  <insert id="insert" parameterType="com.prd.module.warehouse.entity.InvMoveOrder">
     insert into inv_move_order (ID, ORDER_STATUS, ORDER_TYPE, 
       TRANS_ID, ITEM_id, SOURCE_WH_ID, 
       SOURCE_LOCA_ID, SOURCE_ORDER_id, SOURCE_ORG_ID, 
@@ -92,7 +92,7 @@
       #{execErrMsg,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
       #{copr,jdbcType=DECIMAL})
   </insert>
-  <insert id="insertSelective" parameterType="com.prd.warehouse.entity.InvMoveOrder">
+  <insert id="insertSelective" parameterType="com.prd.module.warehouse.entity.InvMoveOrder">
     insert into inv_move_order
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -285,7 +285,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.prd.warehouse.entity.InvMoveOrder">
+  <update id="updateByPrimaryKeySelective" parameterType="com.prd.module.warehouse.entity.InvMoveOrder">
     update inv_move_order
     <set>
       <if test="orderStatus != null">
@@ -381,7 +381,7 @@
     </set>
     where ID = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.prd.warehouse.entity.InvMoveOrder">
+  <update id="updateByPrimaryKey" parameterType="com.prd.module.warehouse.entity.InvMoveOrder">
     update inv_move_order
     set ORDER_STATUS = #{orderStatus,jdbcType=VARCHAR},
       ORDER_TYPE = #{orderType,jdbcType=VARCHAR},

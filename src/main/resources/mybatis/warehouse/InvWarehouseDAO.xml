@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.prd.warehouse.dao.InvWarehouseDAO">
-  <resultMap id="BaseResultMap" type="com.prd.warehouse.entity.InvWarehouse">
+<mapper namespace="com.prd.module.warehouse.dao.InvWarehouseDAO">
+  <resultMap id="BaseResultMap" type="com.prd.module.warehouse.entity.InvWarehouse">
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="wh_no" jdbcType="VARCHAR" property="whNo" />
     <result column="wh_name" jdbcType="VARCHAR" property="whName" />
@@ -35,7 +35,7 @@
     delete from inv_warehouse
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.prd.warehouse.entity.InvWarehouse">
+  <insert id="insert" parameterType="com.prd.module.warehouse.entity.InvWarehouse">
     insert into inv_warehouse (id, wh_no, wh_name, 
       locator_control_flag, entry_mrp_flag, org_id, 
       attribute, create_date, create_by
@@ -45,7 +45,7 @@
       #{attribute,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.prd.warehouse.entity.InvWarehouse">
+  <insert id="insertSelective" parameterType="com.prd.module.warehouse.entity.InvWarehouse">
     insert into inv_warehouse
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -106,7 +106,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.prd.warehouse.entity.InvWarehouse">
+  <update id="updateByPrimaryKeySelective" parameterType="com.prd.module.warehouse.entity.InvWarehouse">
     update inv_warehouse
     <set>
       <if test="whNo != null">
@@ -136,7 +136,7 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.prd.warehouse.entity.InvWarehouse">
+  <update id="updateByPrimaryKey" parameterType="com.prd.module.warehouse.entity.InvWarehouse">
     update inv_warehouse
     set wh_no = #{whNo,jdbcType=VARCHAR},
       wh_name = #{whName,jdbcType=VARCHAR},

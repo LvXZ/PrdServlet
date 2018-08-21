@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.prd.warehouse.dao.InvTransactionTypeDAO">
-  <resultMap id="BaseResultMap" type="com.prd.warehouse.entity.InvTransactionType">
+<mapper namespace="com.prd.module.warehouse.dao.InvTransactionTypeDAO">
+  <resultMap id="BaseResultMap" type="com.prd.module.warehouse.entity.InvTransactionType">
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="TRANS_TYPE" jdbcType="VARCHAR" property="transType" />
     <result column="TRANS_no" jdbcType="VARCHAR" property="transNo" />
@@ -40,7 +40,7 @@
     delete from inv_transaction_type
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.prd.warehouse.entity.InvTransactionType">
+  <insert id="insert" parameterType="com.prd.module.warehouse.entity.InvTransactionType">
     insert into inv_transaction_type (id, TRANS_TYPE, TRANS_no, 
       TRANS_NAME, TRANS_FLOW, USER_DEFINE_FLAG, 
       ENABLE_FLAG, DISABLE_DATE, ATTRIBUTE, 
@@ -52,7 +52,7 @@
       #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=VARCHAR}, 
       #{modifyDate,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.prd.warehouse.entity.InvTransactionType">
+  <insert id="insertSelective" parameterType="com.prd.module.warehouse.entity.InvTransactionType">
     insert into inv_transaction_type
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -137,7 +137,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.prd.warehouse.entity.InvTransactionType">
+  <update id="updateByPrimaryKeySelective" parameterType="com.prd.module.warehouse.entity.InvTransactionType">
     update inv_transaction_type
     <set>
       <if test="transType != null">
@@ -179,7 +179,7 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.prd.warehouse.entity.InvTransactionType">
+  <update id="updateByPrimaryKey" parameterType="com.prd.module.warehouse.entity.InvTransactionType">
     update inv_transaction_type
     set TRANS_TYPE = #{transType,jdbcType=VARCHAR},
       TRANS_no = #{transNo,jdbcType=VARCHAR},

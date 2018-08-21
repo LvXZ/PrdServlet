@@ -27,11 +27,11 @@ public class HttpAspect {
 
     long startTime;
 
-    @Pointcut("execution(public * com.prd.warehouse.controller.*.*(..))")
+    @Pointcut("execution(public * com.prd.module.warehouse.controller.*.*(..))")
     public void flag() {
     }
 
-    @Pointcut("execution(public * com.prd.html.*.*(..))")
+    @Pointcut("execution(public * com.prd.module.html.*.*(..))")
     public void flag2() {
     }
 
