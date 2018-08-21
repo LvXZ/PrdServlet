@@ -36,7 +36,7 @@ spring:
 
 mybatis:
   mapper-locations: classpath:mybatis/*/*.xml
-  type-aliases-package: com.prd.*.entity
+  type-aliases-package: com.prd.module.*.entity
   configuration:
     mapUnderscoreToCamelCase: true
     useColumnLabel: true
@@ -46,7 +46,7 @@ logging:
 
 service-config:
   prdservlet:
-    module-user: true
+    module-user: false
     module-warehouse: true
     module-economy: true
 

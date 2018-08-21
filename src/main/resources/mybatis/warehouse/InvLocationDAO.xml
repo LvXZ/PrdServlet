@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.prd.warehouse.dao.InvLocationDAO">
-  <resultMap id="BaseResultMap" type="com.prd.warehouse.entity.InvLocation">
+<mapper namespace="com.prd.module.warehouse.dao.InvLocationDAO">
+  <resultMap id="BaseResultMap" type="com.prd.module.warehouse.entity.InvLocation">
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="WH_ID" jdbcType="VARCHAR" property="whId" />
     <result column="LOCA_no" jdbcType="VARCHAR" property="locaNo" />
@@ -50,7 +50,7 @@
     delete from inv_location
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.prd.warehouse.entity.InvLocation">
+  <insert id="insert" parameterType="com.prd.module.warehouse.entity.InvLocation">
     insert into inv_location (id, WH_ID, LOCA_no, 
       LOCA_NAME, LOCA_TYPE, LOCA_STATUS, 
       ENTRY_MRP_FLAG, DISABLE_DATE, ORG_ID, 
@@ -68,7 +68,7 @@
       #{ruku,jdbcType=VARCHAR}, #{zhuanru,jdbcType=VARCHAR}, #{zhuanchu,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.prd.warehouse.entity.InvLocation">
+  <insert id="insertSelective" parameterType="com.prd.module.warehouse.entity.InvLocation">
     insert into inv_location
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -201,7 +201,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.prd.warehouse.entity.InvLocation">
+  <update id="updateByPrimaryKeySelective" parameterType="com.prd.module.warehouse.entity.InvLocation">
     update inv_location
     <set>
       <if test="whId != null">
@@ -267,7 +267,7 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.prd.warehouse.entity.InvLocation">
+  <update id="updateByPrimaryKey" parameterType="com.prd.module.warehouse.entity.InvLocation">
     update inv_location
     set WH_ID = #{whId,jdbcType=VARCHAR},
       LOCA_no = #{locaNo,jdbcType=VARCHAR},

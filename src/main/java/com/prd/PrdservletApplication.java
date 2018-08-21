@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@MapperScan("com.prd.*.dao")
+@MapperScan("com.prd.module.*.dao")
 @EnableTransactionManagement //如果mybatis中service实现类中加入事务注解，需要此处添加该注解
 @SpringBootApplication
 public class PrdservletApplication {
