@@ -1,7 +1,7 @@
 package com.prd.warehouse.controller;
 
 import com.prd.user.api.UserAPI;
-import com.prd.warehouse.dto.ResponseDTO;
+import com.prd.dto.ResponseDTO;
 import com.prd.warehouse.service.DispatchService;
 import com.prd.warehouse.service.decorator.DispatchDecorator;
 import org.springframework.beans.factory.annotation.Autowired;

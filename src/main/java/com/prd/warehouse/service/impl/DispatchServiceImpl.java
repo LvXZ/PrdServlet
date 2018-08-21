@@ -1,12 +1,10 @@
 package com.prd.warehouse.service.impl;
 
 import com.prd.warehouse.dao.*;
-import com.prd.warehouse.dto.MessageDTO;
-import com.prd.warehouse.dto.ResponseDTO;
+import com.prd.dto.MessageDTO;
+import com.prd.dto.ResponseDTO;
 import com.prd.warehouse.entity.*;
 import com.prd.warehouse.service.DispatchService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;

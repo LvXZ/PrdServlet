@@ -5,10 +5,10 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.prd.user.api.UserAPI;
 import com.prd.user.entity.Employee;
-import com.prd.warehouse.dto.MessageDTO;
-import com.prd.warehouse.dto.ResponseDTO;
+import com.prd.dto.MessageDTO;
+import com.prd.dto.ResponseDTO;
 import com.prd.warehouse.service.DispatchService;
-import com.prd.warehouse.util.ServletUtil;
+import com.prd.util.ServletUtil;
 import java.io.IOException;
 
 
@@ -73,10 +73,16 @@ public class DispatchDecorator implements DispatchService {
     public ResponseDTO<String> outputForm(String params) {
 
         String formID = parseJSON(params);
+        Employee employee = JSON.parseObject(params, Employee.class);
         ResponseDTO<String> responseDTO = null;
 
         if(!ServletUtil.SHOULD_WAREHOUSE){//查看模块是否激活
             return ResponseDTO.fail(MessageDTO.MODULE_WAREHOUSE);
+        }
+
+        boolean user_flag = userAPI.findEmployeeExistByID(employee);
+        if(ServletUtil.SHOULD_USER != user_flag){
+            return ResponseDTO.fail(MessageDTO.LOGIN_FAIL_0);
         }
 
 
@@ -103,10 +109,16 @@ public class DispatchDecorator implements DispatchService {
     public ResponseDTO<String> transferForm(String params) {
 
         String formID = parseJSON(params);
+        Employee employee = JSON.parseObject(params, Employee.class);
         ResponseDTO<String> responseDTO = null;
 
         if(!ServletUtil.SHOULD_WAREHOUSE){//查看模块是否激活
             return ResponseDTO.fail(MessageDTO.MODULE_WAREHOUSE);
+        }
+
+        boolean user_flag = userAPI.findEmployeeExistByID(employee);
+        if(ServletUtil.SHOULD_USER != user_flag){
+            return ResponseDTO.fail(MessageDTO.LOGIN_FAIL_0);
         }
 
 
@@ -129,6 +141,11 @@ public class DispatchDecorator implements DispatchService {
         }
     }
 
+    /**
+     * 解析json员工对象
+     * @param params
+     * @return
+     */
     private String parseJSON(String params){
 
         ObjectMapper objectMapper = new ObjectMapper();

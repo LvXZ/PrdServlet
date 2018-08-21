@@ -1,7 +1,6 @@
 package com.prd.user.controller;
 
-import com.prd.warehouse.dto.ResponseDTO;
-import com.prd.warehouse.service.decorator.DispatchDecorator;
+import com.prd.dto.ResponseDTO;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;

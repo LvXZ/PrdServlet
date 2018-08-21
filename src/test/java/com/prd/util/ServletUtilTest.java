@@ -1,4 +1,4 @@
-package com.prd.warehouse.util;
+package com.prd.util;
 
 import org.junit.Assert;
 import org.junit.Test;

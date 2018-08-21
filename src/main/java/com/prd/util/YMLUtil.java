@@ -1,4 +1,4 @@
-package com.prd.warehouse.util;
+package com.prd.util;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

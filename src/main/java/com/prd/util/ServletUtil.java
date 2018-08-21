@@ -1,4 +1,4 @@
-package com.prd.warehouse.util;
+package com.prd.util;
 
 /**
  * @ClassName: ServletUtil

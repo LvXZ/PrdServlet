@@ -1,4 +1,4 @@
-package com.prd.warehouse.dto;
+package com.prd.dto;
 
 
 /**

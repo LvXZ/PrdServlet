@@ -1,4 +1,4 @@
-package com.prd.warehouse.aspect;
+package com.prd.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;

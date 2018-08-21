@@ -1,7 +1,7 @@
 package com.prd.user.service;
 
 import com.prd.user.entity.Employee;
-import com.prd.warehouse.dto.ResponseDTO;
+import com.prd.dto.ResponseDTO;
 
 /**
  * @ClassName:

@@ -1,6 +1,6 @@
-package com.prd.warehouse.dto;
+package com.prd.dto;
 
-import com.prd.warehouse.util.PropertiesUtil;
+import com.prd.util.PropertiesUtil;
 
 /**
  * @ClassName:

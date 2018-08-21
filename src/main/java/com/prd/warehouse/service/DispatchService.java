@@ -1,7 +1,6 @@
 package com.prd.warehouse.service;
 
-import com.prd.warehouse.dto.ResponseDTO;
-import org.springframework.stereotype.Service;
+import com.prd.dto.ResponseDTO;
 
 /**
  * @ClassName: DispatchService

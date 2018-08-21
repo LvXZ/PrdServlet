@@ -1,4 +1,4 @@
-package com.prd.warehouse.util;
+package com.prd.util;
 
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
