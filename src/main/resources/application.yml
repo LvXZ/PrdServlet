@@ -32,7 +32,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/work?characterEncoding=utf8&useSSL=true
     username: root
-    password: 12345678
+    password:
 
 mybatis:
   mapper-locations: classpath:mybatis/*/*.xml

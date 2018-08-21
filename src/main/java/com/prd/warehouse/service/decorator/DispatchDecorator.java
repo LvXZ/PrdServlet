@@ -26,6 +26,7 @@ import java.io.IOException;
  * @Date: 2018-08-13  10:16
  */
 
+//@Component
 public class DispatchDecorator implements DispatchService {
 
 
@@ -41,6 +42,7 @@ public class DispatchDecorator implements DispatchService {
 
 
     @Override
+    //@PostConstruct
     public ResponseDTO<String> inputForm(String params) {
 
         String formID = parseJSON(params);
@@ -53,7 +55,12 @@ public class DispatchDecorator implements DispatchService {
             return ResponseDTO.fail(MessageDTO.MODULE_WAREHOUSE);
         }
 
+
+        //userAPI 无法autowired
         boolean user_flag = userAPI.findEmployeeExistByID(employee);
+
+
+
         if(ServletUtil.SHOULD_USER != user_flag){
             return ResponseDTO.fail(MessageDTO.LOGIN_FAIL_3);
         }

@@ -28,7 +28,14 @@ public class DispatchController {
     public ResponseDTO<String> inputForm(@RequestBody String params, HttpServletRequest request, HttpServletResponse response) {
 
         response.setHeader("Access-Control-Allow-Methods", "POST");
-        return new DispatchDecorator(dispatchService).inputForm(params);
+
+
+
+
+
+        //为什么要用new  方法创建dispatch service？
+
+        return dispatchService.inputForm(params);
     }
 
     @PostMapping(value = "/output", produces = "application/json;charset=UTF-8")

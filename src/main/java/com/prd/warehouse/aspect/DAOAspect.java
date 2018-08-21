@@ -39,8 +39,8 @@ public class DAOAspect {
     }
 
 
-    @AfterReturning(value = "daoFlag()",returning = "returnValue")
+    /*@AfterReturning(value = "daoFlag()",returning = "returnValue")
     public void daoAfterReturning(Object returnValue){
         logger.debug("Object={}", returnValue.toString());
-    }
+    }*/
 }
