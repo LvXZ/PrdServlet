@@ -29,8 +29,8 @@ import java.io.IOException;
 public class DispatchDecorator implements DispatchService {
 
 
-    /*@Autowired
-    private UserAPI userAPI;*/
+    @Autowired
+    private UserAPI userAPI;
 
     //构造decorator对象
     private DispatchService dispatchService;
@@ -53,10 +53,10 @@ public class DispatchDecorator implements DispatchService {
             return ResponseDTO.fail(MessageDTO.MODULE_WAREHOUSE);
         }
 
-        /*boolean user_flag = userAPI.findEmployeeExistByID(employee);
+        boolean user_flag = userAPI.findEmployeeExistByID(employee);
         if(ServletUtil.SHOULD_USER != user_flag){
             return ResponseDTO.fail(MessageDTO.LOGIN_FAIL_3);
-        }*/
+        }
 
 
         boolean shouldRollback = false;
