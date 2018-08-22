@@ -46,7 +46,7 @@ logging:
 
 service-config:
   prdservlet:
-    module-user: false
+    module-user: true
     module-warehouse: true
     module-economy: true
 
