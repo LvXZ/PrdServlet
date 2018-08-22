@@ -31,24 +31,19 @@ public class DispatchController {
     @CrossOrigin(allowCredentials = "false")
     public ResponseDTO<String> inputForm(@RequestBody String params, HttpServletRequest request, HttpServletResponse response) {
 
-        response.setHeader("Access-Control-Allow-Methods", "POST");
         return new DispatchDecorator(dispatchService,userAPI).inputForm(params);
     }
 
-    @PostMapping(value = "/output", produces = "application/json;charset=UTF-8")
+    @PostMapping(value = "/output")
     @CrossOrigin(allowCredentials = "false")
     public ResponseDTO<String> outputForm(@RequestBody String params, HttpServletRequest request, HttpServletResponse response) {
 
-        response.setHeader("Access-Control-Allow-Methods", "POST");
         return new DispatchDecorator(dispatchService,userAPI).outputForm(params);
     }
 
-    @PostMapping(value = "/transfer", produces = "application/json;charset=UTF-8")
+    @PostMapping(value = "/transfer")
     @CrossOrigin(allowCredentials = "false")
     public ResponseDTO<String> transferForm(@RequestBody String params, HttpServletRequest request, HttpServletResponse response) {
-
-        response.setHeader("Access-Control-Allow-Methods", "POST");
         return new DispatchDecorator(dispatchService,userAPI).transferForm(params);
     }
-
 }

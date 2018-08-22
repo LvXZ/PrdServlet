@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="../static/images/logo.ico" th:href="@{images/logo.ico}" type="image/x-icon"/>
-    <link rel="stylesheet" type="text/css" href="../static/css/index.css" th:href="@{css/index.css}">
 
     <link rel="stylesheet" type="text/css" href="../static/resources/bootstrap-3.3.7/css/bootstrap.min.css" th:href="@{resources/bootstrap-3.3.7/css/bootstrap.min.css}">
     <script src="../static/js/jquery-3.2.1.min.js" th:src="@{js/jquery-3.2.1.min.js}"></script>
@@ -80,19 +79,28 @@
 
         function outputForm(){
 
-            var outputID = $('#output_id').val();
+            var outputID = $('#output_id').val(),
+                employeeId = $('#employee_id').val(),
+                password = $('#password').val();
             var objJson = {
-                "formID":outputID
+                "formID":outputID,
+                "employeeId":employeeId,
+                "password":password
             };
+
             var URL = "/dispatch/output";
             dispatch(objJson,URL);
         }
 
         function transferForm(){
 
-            var transferID = $('#transfer_id').val();
+            var transferID = $('#transfer_id').val(),
+                employeeId = $('#employee_id').val(),
+                password = $('#password').val();
             var objJson = {
-                "formID":transferID
+                "formID":transferID,
+                "employeeId":employeeId,
+                "password":password
             };
             var URL = "/dispatch/transfer";
             dispatch(objJson,URL);
