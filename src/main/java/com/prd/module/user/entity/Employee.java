@@ -1,5 +1,7 @@
 package com.prd.module.user.entity;
 
+import com.prd.aspect.test.AuthorityEnum;
+
 public class Employee {
 
     private Integer employeeId;
@@ -9,6 +11,16 @@ public class Employee {
     private String password;
 
     private Integer enableStatus;
+
+    private AuthorityEnum authority;
+
+    public AuthorityEnum getAutoryity() {
+        return authority;
+    }
+
+    public void setAutoryity(AuthorityEnum authority) {
+        this.authority = authority;
+    }
 
     public Integer getEmployeeId() {
         return employeeId;
@@ -49,6 +61,7 @@ public class Employee {
                 ", employeeName='" + employeeName + '\'' +
                 ", password='" + password + '\'' +
                 ", enableStatus=" + enableStatus +
+                ", authority=" + authority +
                 '}';
     }
 }
