@@ -1,5 +1,7 @@
 package com.prd.module.warehouse.controller;
 
+import com.prd.aspect.test.AuthorityEnum;
+import com.prd.aspect.test.PermissionNeed;
 import com.prd.module.user.api.UserAPI;
 import com.prd.dto.ResponseDTO;
 import com.prd.module.warehouse.service.DispatchService;
@@ -27,6 +29,7 @@ public class DispatchController {
     @Autowired
     private UserAPI userAPI;
 
+    @PermissionNeed(value = AuthorityEnum.DISPATCH_IN)
     @PostMapping(value = "/input", produces = "application/json;charset=UTF-8")
     @CrossOrigin(allowCredentials = "false")
     public ResponseDTO<String> inputForm(@RequestBody String params, HttpServletRequest request, HttpServletResponse response) {

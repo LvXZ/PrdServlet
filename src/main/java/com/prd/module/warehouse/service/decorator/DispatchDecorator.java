@@ -19,7 +19,8 @@ import java.io.IOException;
  * @Date: 2018-08-13  10:16
  */
 
-public class DispatchDecorator implements DispatchService {
+//@Component
+public  class DispatchDecorator implements DispatchService {
 
 
     //构造decorator对象
@@ -33,6 +34,7 @@ public class DispatchDecorator implements DispatchService {
     }
 
     @Override
+    //@PostConstruct
     public ResponseDTO<String> inputForm(String params) {
 
         String formID = parseJSON(params);
@@ -41,10 +43,15 @@ public class DispatchDecorator implements DispatchService {
         ResponseDTO<String> responseDTO = null;
 
 
+
+        //ware house 模块未激活
         if(!ServletUtil.SHOULD_WAREHOUSE){//查看模块是否激活
             return ResponseDTO.fail(MessageDTO.MODULE_WAREHOUSE);
         }
 
+
+
+        //若用户不存在或用户密码错误
         boolean user_flag = userAPI.findEmployeeExistByID(employee);
         if(ServletUtil.SHOULD_USER != user_flag){
             return ResponseDTO.fail(MessageDTO.LOGIN_FAIL_0);
