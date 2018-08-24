@@ -1,6 +1,6 @@
 package com.prd.module.user.entity;
 
-import com.prd.aspect.test.AuthorityEnum;
+import com.prd.aspect.authority.AuthorityEnum;
 
 public class Employee {
 

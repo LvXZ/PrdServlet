@@ -1,7 +1,5 @@
 package com.prd.module.warehouse.service.impl;
 
-import com.prd.aspect.test.AuthorityEnum;
-import com.prd.aspect.test.PermissionNeed;
 import com.prd.module.warehouse.dao.*;
 import com.prd.dto.MessageDTO;
 import com.prd.dto.ResponseDTO;

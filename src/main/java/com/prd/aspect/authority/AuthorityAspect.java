@@ -1,6 +1,8 @@
-package com.prd.aspect.test;
+package com.prd.aspect.authority;
 
 import com.alibaba.fastjson.JSON;
+import com.prd.aspect.authority.AuthorityEnum;
+import com.prd.aspect.authority.PermissionNeed;
 import com.prd.module.user.entity.Employee;
 import com.prd.module.warehouse.service.DispatchService;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -20,10 +22,9 @@ import java.lang.reflect.Method;
 
 /**
  * @ClassName AuthorityAspect
- * @Description
+ * @Description 面向controller层切向的拦截数据request、response、param的数据请求
  * @Author lin
  * @DATE 2018/8/23 14:30
- * @DESCRIPT
  **/
 
 @Aspect
@@ -40,6 +41,7 @@ public class AuthorityAspect {
         RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
         //从获取RequestAttributes中获取HttpServletRequest的信息
         HttpServletRequest request = (HttpServletRequest) requestAttributes.resolveReference(RequestAttributes.REFERENCE_REQUEST);
+        //从获取RequestAttributes中获取HttpServletResponse的信息//一般不会使用到响应response
         HttpServletResponse response = ((ServletRequestAttributes) requestAttributes).getResponse();
 
 
@@ -52,31 +54,22 @@ public class AuthorityAspect {
 
         String realMethodName = realMethod.getName();
         String requestMethod = request.getMethod();
-
-
         System.out.println("requestMethod " + requestMethod);
         System.out.println("realMethodName " + realMethodName);
 
         Object  obj = null;
-
-        String userString = jp.getArgs()[0].toString();
+        String userString = jp.getArgs()[0].toString();//获取请求的json字符串
         Employee employee = JSON.parseObject(userString, Employee.class);
-        System.out.println("---------------------------------------------"+employee.getEmployeeId());
 
-        //
         if(isHasPermission(realMethod,employee.getEmployeeId())) {
-            obj =  jp.proceed();//用户拥有该方法权限时执行方法里面的内容
-        }else {//用户没有权限，则直接返回没有权限的通知
-
+            //用户拥有该方法权限时执行方法里面的内容
+            obj =  jp.proceed();
+        }else {
+            //用户没有权限，则直接返回没有权限的通知
             System.out.println("该用户无权利进行该操作");
 
         }
         return obj;
-
-        //
-
-        //null 会报错
-        //return null;
 
     }
 
@@ -94,9 +87,8 @@ public class AuthorityAspect {
             if (realMethod.isAnnotationPresent(PermissionNeed.class)) {
                 PermissionNeed permissionModule = realMethod.getAnnotation(PermissionNeed.class);
                 //运行realMethod方法所需的权限
-                AuthorityEnum needAuthority = permissionModule.value();
+                AuthorityEnum needAuthority = permissionModule.value();//获取为controller设定的permission权限
                 //若用户权限中包含needAuthority，返回true
-
 
                 Employee employee = new Employee();
                 employee.setAutoryity(AuthorityEnum.DISPATCH_IN);
@@ -105,9 +97,6 @@ public class AuthorityAspect {
                     System.out.println("验证通过，可以继续操作");
                     return  true;
                 }
-
-
-
 
             }
         } catch (Exception e) {

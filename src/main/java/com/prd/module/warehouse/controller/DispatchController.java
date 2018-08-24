@@ -1,7 +1,7 @@
 package com.prd.module.warehouse.controller;
 
-import com.prd.aspect.test.AuthorityEnum;
-import com.prd.aspect.test.PermissionNeed;
+import com.prd.aspect.authority.AuthorityEnum;
+import com.prd.aspect.authority.PermissionNeed;
 import com.prd.module.user.api.UserAPI;
 import com.prd.dto.ResponseDTO;
 import com.prd.module.warehouse.service.DispatchService;
