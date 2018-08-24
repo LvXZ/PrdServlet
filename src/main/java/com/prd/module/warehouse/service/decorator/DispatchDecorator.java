@@ -19,7 +19,7 @@ import java.io.IOException;
  * @Date: 2018-08-13  10:16
  */
 
-//@Component
+
 public  class DispatchDecorator implements DispatchService {
 
 

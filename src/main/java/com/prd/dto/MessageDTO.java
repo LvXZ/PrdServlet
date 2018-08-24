@@ -21,6 +21,9 @@ public class MessageDTO {
     public final static MessageDTO MODULE_WAREHOUSE = new MessageDTO(-7,"库房模块关闭，无法启动响应");
 
 
+    public final static MessageDTO MODULE_REDIS = new MessageDTO(-7,"REDIS模块关闭，无法启动响应");
+
+
     //login
     public final static MessageDTO LOGIN_SUCCESS = new MessageDTO(1,"登录成功");
     public final static MessageDTO LOGIN_FAIL_0 = new MessageDTO(1,"操作员账户验证失败");

@@ -24,7 +24,7 @@ spring:
   thymeleaf:
     cache: true
     prefix: classpath:/templates/ #对文件夹进行拦截
-    suffic: .html                 #对文件格式进行限制
+    suffix: .html                 #对文件格式进行限制
     mode: HTML5
     encoding: UTF-8
 
@@ -49,4 +49,5 @@ service-config:
     module-user: true
     module-warehouse: true
     module-economy: true
+    module-redis: false
 

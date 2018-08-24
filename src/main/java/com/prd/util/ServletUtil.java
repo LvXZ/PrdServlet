@@ -12,5 +12,6 @@ public class ServletUtil {
     public final static boolean SHOULD_USER = YMLUtil.prdservlet.get("module-user");
     public final static boolean SHOULD_WAREHOUSE = YMLUtil.prdservlet.get("module-warehouse");
     public final static boolean SHOULD_ECONOMY = YMLUtil.prdservlet.get("module-economy");
+    public final static boolean SHOULD_REDIS = YMLUtil.prdservlet.get("module-redis");
 
 }

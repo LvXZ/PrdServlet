@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 
 /**
  * @ClassName PermissionNeed
- * @Description 自定义注解 这是一个注解，用来为接口添加注解，标识接口的所属模块
+ * @Description 自定义注解 这是一个注解，用来为接口添加注解，标识接口的所需权限
  * @Author lin
  * @DATE 2018/8/23 12:26
  **/
