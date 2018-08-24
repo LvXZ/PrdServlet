@@ -14,5 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  **/
 
 public interface RedisService {
+
     ResponseDTO<RedisEntity> doRedis(String params);
+
 }

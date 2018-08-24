@@ -33,16 +33,13 @@ public class RedisController {
     @Autowired
     RedisService redisService;
 
-    @Autowired
-    RedisEntityDao redisEntityDao;
-
     @PermissionNeed(value = AuthorityEnum.DISPATCH_IN)
     @PostMapping(value = "/doRedis")
     public ResponseDTO<RedisEntity> doRedis(@RequestBody String params,
                                             HttpServletRequest request,
                                             HttpServletResponse response){
 
-        return new RedisServiceDecorator(redisService,redisEntityDao).doRedis(params);
+        return new RedisServiceDecorator(redisService).doRedis(params);
 
     }
 

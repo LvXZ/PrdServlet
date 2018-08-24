@@ -3,6 +3,8 @@ package com.prd.module.warehouse.service.decorator;
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.prd.module.redis.service.RedisService;
+import com.prd.module.redis.service.decorator.RedisServiceDecorator;
 import com.prd.module.user.api.UserAPI;
 import com.prd.module.user.entity.Employee;
 import com.prd.dto.MessageDTO;
@@ -28,9 +30,12 @@ public  class DispatchDecorator implements DispatchService {
     //通用用户api
     private final UserAPI userAPI;
 
-    public DispatchDecorator(DispatchService dispatchService, UserAPI userAPI) {
+    private final RedisService redisService;
+
+    public DispatchDecorator(DispatchService dispatchService, UserAPI userAPI, RedisService redisService) {
         this.dispatchService = dispatchService;
         this.userAPI = userAPI;
+        this.redisService = redisService;
     }
 
     @Override
@@ -52,9 +57,23 @@ public  class DispatchDecorator implements DispatchService {
 
 
         //若用户不存在或用户密码错误
-        boolean user_flag = userAPI.findEmployeeExistByID(employee);
-        if(ServletUtil.SHOULD_USER != user_flag){
+        /*if(ServletUtil.SHOULD_USER && userAPI.findEmployeeExistByID(employee)){
             return ResponseDTO.fail(MessageDTO.LOGIN_FAIL_0);
+        }*/
+
+        if(ServletUtil.SHOULD_USER){
+
+            boolean user_flag;
+            if(ServletUtil.SHOULD_REDIS){
+                user_flag = userAPI.findEmployeeExistByID(employee);//假设redis//redisService
+                //new RedisServiceDecorator(redisService).doRedis(employee.getEmployeeName());
+            }else{
+                user_flag = userAPI.findEmployeeExistByID(employee);
+            }
+
+            if(!user_flag){
+                return ResponseDTO.fail(MessageDTO.LOGIN_FAIL_0);
+            }
         }
 
 

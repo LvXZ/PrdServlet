@@ -27,11 +27,9 @@ public class RedisServiceDecorator implements RedisService {
 
 
     private RedisService redisService;
-    private RedisEntityDao redisEntityDao;
 
-    public RedisServiceDecorator(RedisService redisService, RedisEntityDao redisEntityDao) {
+    public RedisServiceDecorator(RedisService redisService) {
         this.redisService = redisService;
-        this.redisEntityDao = redisEntityDao;
     }
 
 

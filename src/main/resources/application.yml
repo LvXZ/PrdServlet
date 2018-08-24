@@ -49,5 +49,5 @@ service-config:
     module-user: true
     module-warehouse: true
     module-economy: true
-    module-redis: false
+    module-redis: true
 

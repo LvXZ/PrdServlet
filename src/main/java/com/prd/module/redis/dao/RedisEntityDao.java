@@ -10,5 +10,8 @@ import org.springframework.boot.autoconfigure.cache.CacheProperties;
  * @DATE 2018/8/24 11:49
  **/
 public interface RedisEntityDao {
+
+
     RedisEntity queryRedisEntityByEmployeeID(int employeeID);
+
 }
