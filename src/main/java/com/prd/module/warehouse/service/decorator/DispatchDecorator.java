@@ -61,6 +61,7 @@ public  class DispatchDecorator implements DispatchService {
             return ResponseDTO.fail(MessageDTO.LOGIN_FAIL_0);
         }*/
 
+
         if(ServletUtil.SHOULD_USER){
 
             boolean user_flag;
