@@ -1,4 +1,4 @@
-package com.prd.module.warehouse.entity;
+package com.prd.module.warehouse0.entity;
 
 import java.math.BigDecimal;
 import java.util.Date;

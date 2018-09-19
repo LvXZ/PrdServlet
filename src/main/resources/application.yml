@@ -1,4 +1,7 @@
 # 后端配置
+
+# 本系统包含warehouse0.0版本和warehouse1.0版本
+# 运行时，请将warehouse0.0模块关闭
 server:
   port: 9000
   tomcat:
@@ -47,7 +50,8 @@ logging:
 service-config:
   prdservlet:
     module-user: true
-    module-warehouse: true
+    module-warehouse0.0: false
+    module-warehouse1.0: true
     module-economy: true
     module-redis: true
 

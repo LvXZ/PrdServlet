@@ -1,6 +1,6 @@
-package com.prd.module.warehouse.dao;
+package com.prd.module.warehouse0.dao;
 
-import com.prd.module.warehouse.entity.InvMoveOrder;
+import com.prd.module.warehouse0.entity.InvMoveOrder;
 
 public interface InvMoveOrderDAO {
 

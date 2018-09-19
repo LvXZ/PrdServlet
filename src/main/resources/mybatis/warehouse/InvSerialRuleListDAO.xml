@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prd.module.warehouse.dao.InvSerialRuleListDAO">
+  <resultMap id="BaseResultMap" type="com.prd.module.warehouse.entity.InvSerialRuleList">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="hid" jdbcType="BIGINT" property="hid" />
+    <result column="col_no" jdbcType="INTEGER" property="colNo" />
+    <result column="col_type" jdbcType="TINYINT" property="colType" />
+    <result column="col_value" jdbcType="VARCHAR" property="colValue" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, hid, col_no, col_type, col_value
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from inv_serial_rule_list
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from inv_serial_rule_list
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.prd.module.warehouse.entity.InvSerialRuleList">
+    insert into inv_serial_rule_list (id, hid, col_no, 
+      col_type, col_value)
+    values (#{id,jdbcType=BIGINT}, #{hid,jdbcType=BIGINT}, #{colNo,jdbcType=INTEGER}, 
+      #{colType,jdbcType=TINYINT}, #{colValue,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.prd.module.warehouse.entity.InvSerialRuleList">
+    insert into inv_serial_rule_list
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="hid != null">
+        hid,
+      </if>
+      <if test="colNo != null">
+        col_no,
+      </if>
+      <if test="colType != null">
+        col_type,
+      </if>
+      <if test="colValue != null">
+        col_value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="hid != null">
+        #{hid,jdbcType=BIGINT},
+      </if>
+      <if test="colNo != null">
+        #{colNo,jdbcType=INTEGER},
+      </if>
+      <if test="colType != null">
+        #{colType,jdbcType=TINYINT},
+      </if>
+      <if test="colValue != null">
+        #{colValue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.prd.module.warehouse.entity.InvSerialRuleList">
+    update inv_serial_rule_list
+    <set>
+      <if test="hid != null">
+        hid = #{hid,jdbcType=BIGINT},
+      </if>
+      <if test="colNo != null">
+        col_no = #{colNo,jdbcType=INTEGER},
+      </if>
+      <if test="colType != null">
+        col_type = #{colType,jdbcType=TINYINT},
+      </if>
+      <if test="colValue != null">
+        col_value = #{colValue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.prd.module.warehouse.entity.InvSerialRuleList">
+    update inv_serial_rule_list
+    set hid = #{hid,jdbcType=BIGINT},
+      col_no = #{colNo,jdbcType=INTEGER},
+      col_type = #{colType,jdbcType=TINYINT},
+      col_value = #{colValue,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prd.module.warehouse.dao.InvSpecHeadDAO">
+  <resultMap id="BaseResultMap" type="com.prd.module.warehouse.entity.InvSpecHead">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="spec_no" jdbcType="INTEGER" property="specNo" />
+    <result column="spec_status" jdbcType="TINYINT" property="specStatus" />
+    <result column="spec_name" jdbcType="VARCHAR" property="specName" />
+    <result column="item_id" jdbcType="BIGINT" property="itemId" />
+    <result column="unit_id" jdbcType="BIGINT" property="unitId" />
+    <result column="attribute" jdbcType="VARCHAR" property="attribute" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_id" jdbcType="BIGINT" property="createId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, spec_no, spec_status, spec_name, item_id, unit_id, attribute, create_time, create_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from inv_spec_head
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from inv_spec_head
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.prd.module.warehouse.entity.InvSpecHead">
+    insert into inv_spec_head (id, spec_no, spec_status, 
+      spec_name, item_id, unit_id, 
+      attribute, create_time, create_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{specNo,jdbcType=INTEGER}, #{specStatus,jdbcType=TINYINT}, 
+      #{specName,jdbcType=VARCHAR}, #{itemId,jdbcType=BIGINT}, #{unitId,jdbcType=BIGINT}, 
+      #{attribute,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.prd.module.warehouse.entity.InvSpecHead">
+    insert into inv_spec_head
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="specNo != null">
+        spec_no,
+      </if>
+      <if test="specStatus != null">
+        spec_status,
+      </if>
+      <if test="specName != null">
+        spec_name,
+      </if>
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="unitId != null">
+        unit_id,
+      </if>
+      <if test="attribute != null">
+        attribute,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createId != null">
+        create_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="specNo != null">
+        #{specNo,jdbcType=INTEGER},
+      </if>
+      <if test="specStatus != null">
+        #{specStatus,jdbcType=TINYINT},
+      </if>
+      <if test="specName != null">
+        #{specName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="unitId != null">
+        #{unitId,jdbcType=BIGINT},
+      </if>
+      <if test="attribute != null">
+        #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createId != null">
+        #{createId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.prd.module.warehouse.entity.InvSpecHead">
+    update inv_spec_head
+    <set>
+      <if test="specNo != null">
+        spec_no = #{specNo,jdbcType=INTEGER},
+      </if>
+      <if test="specStatus != null">
+        spec_status = #{specStatus,jdbcType=TINYINT},
+      </if>
+      <if test="specName != null">
+        spec_name = #{specName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null">
+        item_id = #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="unitId != null">
+        unit_id = #{unitId,jdbcType=BIGINT},
+      </if>
+      <if test="attribute != null">
+        attribute = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createId != null">
+        create_id = #{createId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.prd.module.warehouse.entity.InvSpecHead">
+    update inv_spec_head
+    set spec_no = #{specNo,jdbcType=INTEGER},
+      spec_status = #{specStatus,jdbcType=TINYINT},
+      spec_name = #{specName,jdbcType=VARCHAR},
+      item_id = #{itemId,jdbcType=BIGINT},
+      unit_id = #{unitId,jdbcType=BIGINT},
+      attribute = #{attribute,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_id = #{createId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

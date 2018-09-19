@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--此处的MyBatis映射文件，为warehouse0.0版本，运行时请将对应映射type实体类文件夹warehouse，改为warehouse0-->
+<mapper namespace="com.prd.module.warehouse.dao.InvLocationDAO">
+  <resultMap id="BaseResultMap" type="com.prd.module.warehouse.entity.InvLocation">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="WH_ID" jdbcType="VARCHAR" property="whId" />
+    <result column="LOCA_no" jdbcType="VARCHAR" property="locaNo" />
+    <result column="LOCA_NAME" jdbcType="VARCHAR" property="locaName" />
+    <result column="LOCA_TYPE" jdbcType="VARCHAR" property="locaType" />
+    <result column="LOCA_STATUS" jdbcType="VARCHAR" property="locaStatus" />
+    <result column="ENTRY_MRP_FLAG" jdbcType="VARCHAR" property="entryMrpFlag" />
+    <result column="DISABLE_DATE" jdbcType="TIMESTAMP" property="disableDate" />
+    <result column="ORG_ID" jdbcType="VARCHAR" property="orgId" />
+    <result column="ATTRIBUTE" jdbcType="VARCHAR" property="attribute" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="CREATE_BY" jdbcType="VARCHAR" property="createBy" />
+    <result column="MODIFY_DATE" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="MODIFY_BY" jdbcType="VARCHAR" property="modifyBy" />
+    <result column="PRIO" jdbcType="INTEGER" property="prio" />
+    <result column="CTYPE" jdbcType="VARCHAR" property="ctype" />
+    <result column="PEITAO" jdbcType="VARCHAR" property="peitao" />
+    <result column="CHUKU" jdbcType="VARCHAR" property="chuku" />
+    <result column="RUKU" jdbcType="VARCHAR" property="ruku" />
+    <result column="ZHUANRU" jdbcType="VARCHAR" property="zhuanru" />
+    <result column="ZHUANCHU" jdbcType="VARCHAR" property="zhuanchu" />
+  </resultMap>
+
+  <sql id="Base_Column_List_1">
+    id, WH_ID, LOCA_no, LOCA_NAME, LOCA_TYPE, LOCA_STATUS,
+    CHUKU, RUKU, ZHUANRU, ZHUANCHU
+  </sql>
+
+  <sql id="Base_Column_List">
+    id, WH_ID, LOCA_no, LOCA_NAME, LOCA_TYPE, LOCA_STATUS, ENTRY_MRP_FLAG, DISABLE_DATE, 
+    ORG_ID, ATTRIBUTE, CREATE_DATE, CREATE_BY, MODIFY_DATE, MODIFY_BY, PRIO, CTYPE, PEITAO, 
+    CHUKU, RUKU, ZHUANRU, ZHUANCHU
+  </sql>
+
+
+  <select id="selectInvLocationByID" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List_1" />
+    from inv_location
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from inv_location
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.prd.module.warehouse.entity.InvLocation">
+    insert into inv_location (id, WH_ID, LOCA_no, 
+      LOCA_NAME, LOCA_TYPE, LOCA_STATUS, 
+      ENTRY_MRP_FLAG, DISABLE_DATE, ORG_ID, 
+      ATTRIBUTE, CREATE_DATE, CREATE_BY, 
+      MODIFY_DATE, MODIFY_BY, PRIO, 
+      CTYPE, PEITAO, CHUKU, 
+      RUKU, ZHUANRU, ZHUANCHU
+      )
+    values (#{id,jdbcType=VARCHAR}, #{whId,jdbcType=VARCHAR}, #{locaNo,jdbcType=VARCHAR}, 
+      #{locaName,jdbcType=VARCHAR}, #{locaType,jdbcType=VARCHAR}, #{locaStatus,jdbcType=VARCHAR}, 
+      #{entryMrpFlag,jdbcType=VARCHAR}, #{disableDate,jdbcType=TIMESTAMP}, #{orgId,jdbcType=VARCHAR}, 
+      #{attribute,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
+      #{modifyDate,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=VARCHAR}, #{prio,jdbcType=INTEGER}, 
+      #{ctype,jdbcType=VARCHAR}, #{peitao,jdbcType=VARCHAR}, #{chuku,jdbcType=VARCHAR}, 
+      #{ruku,jdbcType=VARCHAR}, #{zhuanru,jdbcType=VARCHAR}, #{zhuanchu,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.prd.module.warehouse.entity.InvLocation">
+    insert into inv_location
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="whId != null">
+        WH_ID,
+      </if>
+      <if test="locaNo != null">
+        LOCA_no,
+      </if>
+      <if test="locaName != null">
+        LOCA_NAME,
+      </if>
+      <if test="locaType != null">
+        LOCA_TYPE,
+      </if>
+      <if test="locaStatus != null">
+        LOCA_STATUS,
+      </if>
+      <if test="entryMrpFlag != null">
+        ENTRY_MRP_FLAG,
+      </if>
+      <if test="disableDate != null">
+        DISABLE_DATE,
+      </if>
+      <if test="orgId != null">
+        ORG_ID,
+      </if>
+      <if test="attribute != null">
+        ATTRIBUTE,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="createBy != null">
+        CREATE_BY,
+      </if>
+      <if test="modifyDate != null">
+        MODIFY_DATE,
+      </if>
+      <if test="modifyBy != null">
+        MODIFY_BY,
+      </if>
+      <if test="prio != null">
+        PRIO,
+      </if>
+      <if test="ctype != null">
+        CTYPE,
+      </if>
+      <if test="peitao != null">
+        PEITAO,
+      </if>
+      <if test="chuku != null">
+        CHUKU,
+      </if>
+      <if test="ruku != null">
+        RUKU,
+      </if>
+      <if test="zhuanru != null">
+        ZHUANRU,
+      </if>
+      <if test="zhuanchu != null">
+        ZHUANCHU,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="whId != null">
+        #{whId,jdbcType=VARCHAR},
+      </if>
+      <if test="locaNo != null">
+        #{locaNo,jdbcType=VARCHAR},
+      </if>
+      <if test="locaName != null">
+        #{locaName,jdbcType=VARCHAR},
+      </if>
+      <if test="locaType != null">
+        #{locaType,jdbcType=VARCHAR},
+      </if>
+      <if test="locaStatus != null">
+        #{locaStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="entryMrpFlag != null">
+        #{entryMrpFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="disableDate != null">
+        #{disableDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null">
+        #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null">
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null">
+        #{modifyBy,jdbcType=VARCHAR},
+      </if>
+      <if test="prio != null">
+        #{prio,jdbcType=INTEGER},
+      </if>
+      <if test="ctype != null">
+        #{ctype,jdbcType=VARCHAR},
+      </if>
+      <if test="peitao != null">
+        #{peitao,jdbcType=VARCHAR},
+      </if>
+      <if test="chuku != null">
+        #{chuku,jdbcType=VARCHAR},
+      </if>
+      <if test="ruku != null">
+        #{ruku,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuanru != null">
+        #{zhuanru,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuanchu != null">
+        #{zhuanchu,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.prd.module.warehouse.entity.InvLocation">
+    update inv_location
+    <set>
+      <if test="whId != null">
+        WH_ID = #{whId,jdbcType=VARCHAR},
+      </if>
+      <if test="locaNo != null">
+        LOCA_no = #{locaNo,jdbcType=VARCHAR},
+      </if>
+      <if test="locaName != null">
+        LOCA_NAME = #{locaName,jdbcType=VARCHAR},
+      </if>
+      <if test="locaType != null">
+        LOCA_TYPE = #{locaType,jdbcType=VARCHAR},
+      </if>
+      <if test="locaStatus != null">
+        LOCA_STATUS = #{locaStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="entryMrpFlag != null">
+        ENTRY_MRP_FLAG = #{entryMrpFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="disableDate != null">
+        DISABLE_DATE = #{disableDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orgId != null">
+        ORG_ID = #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null">
+        ATTRIBUTE = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        CREATE_BY = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null">
+        MODIFY_DATE = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null">
+        MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
+      </if>
+      <if test="prio != null">
+        PRIO = #{prio,jdbcType=INTEGER},
+      </if>
+      <if test="ctype != null">
+        CTYPE = #{ctype,jdbcType=VARCHAR},
+      </if>
+      <if test="peitao != null">
+        PEITAO = #{peitao,jdbcType=VARCHAR},
+      </if>
+      <if test="chuku != null">
+        CHUKU = #{chuku,jdbcType=VARCHAR},
+      </if>
+      <if test="ruku != null">
+        RUKU = #{ruku,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuanru != null">
+        ZHUANRU = #{zhuanru,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuanchu != null">
+        ZHUANCHU = #{zhuanchu,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.prd.module.warehouse.entity.InvLocation">
+    update inv_location
+    set WH_ID = #{whId,jdbcType=VARCHAR},
+      LOCA_no = #{locaNo,jdbcType=VARCHAR},
+      LOCA_NAME = #{locaName,jdbcType=VARCHAR},
+      LOCA_TYPE = #{locaType,jdbcType=VARCHAR},
+      LOCA_STATUS = #{locaStatus,jdbcType=VARCHAR},
+      ENTRY_MRP_FLAG = #{entryMrpFlag,jdbcType=VARCHAR},
+      DISABLE_DATE = #{disableDate,jdbcType=TIMESTAMP},
+      ORG_ID = #{orgId,jdbcType=VARCHAR},
+      ATTRIBUTE = #{attribute,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      CREATE_BY = #{createBy,jdbcType=VARCHAR},
+      MODIFY_DATE = #{modifyDate,jdbcType=TIMESTAMP},
+      MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
+      PRIO = #{prio,jdbcType=INTEGER},
+      CTYPE = #{ctype,jdbcType=VARCHAR},
+      PEITAO = #{peitao,jdbcType=VARCHAR},
+      CHUKU = #{chuku,jdbcType=VARCHAR},
+      RUKU = #{ruku,jdbcType=VARCHAR},
+      ZHUANRU = #{zhuanru,jdbcType=VARCHAR},
+      ZHUANCHU = #{zhuanchu,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,4 +1,4 @@
-package com.prd.module.warehouse.service;
+package com.prd.module.warehouse0.service;
 
 import com.prd.dto.ResponseDTO;
 

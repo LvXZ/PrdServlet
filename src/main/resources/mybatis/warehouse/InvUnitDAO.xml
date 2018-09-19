@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prd.module.warehouse.dao.InvUnitDAO">
+  <resultMap id="BaseResultMap" type="com.prd.module.warehouse.entity.InvUnit">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="unit_name" jdbcType="VARCHAR" property="unitName" />
+    <result column="attribute" jdbcType="VARCHAR" property="attribute" />
+    <result column="is_system" jdbcType="TINYINT" property="isSystem" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, unit_name, attribute, is_system
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from inv_unit
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from inv_unit
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.prd.module.warehouse.entity.InvUnit">
+    insert into inv_unit (id, unit_name, attribute, 
+      is_system)
+    values (#{id,jdbcType=BIGINT}, #{unitName,jdbcType=VARCHAR}, #{attribute,jdbcType=VARCHAR}, 
+      #{isSystem,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.prd.module.warehouse.entity.InvUnit">
+    insert into inv_unit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="unitName != null">
+        unit_name,
+      </if>
+      <if test="attribute != null">
+        attribute,
+      </if>
+      <if test="isSystem != null">
+        is_system,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="unitName != null">
+        #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null">
+        #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="isSystem != null">
+        #{isSystem,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.prd.module.warehouse.entity.InvUnit">
+    update inv_unit
+    <set>
+      <if test="unitName != null">
+        unit_name = #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null">
+        attribute = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="isSystem != null">
+        is_system = #{isSystem,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.prd.module.warehouse.entity.InvUnit">
+    update inv_unit
+    set unit_name = #{unitName,jdbcType=VARCHAR},
+      attribute = #{attribute,jdbcType=VARCHAR},
+      is_system = #{isSystem,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

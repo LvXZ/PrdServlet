@@ -2,48 +2,45 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.prd.module.warehouse.dao.InvWarehouseDAO">
   <resultMap id="BaseResultMap" type="com.prd.module.warehouse.entity.InvWarehouse">
-    <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="wh_no" jdbcType="VARCHAR" property="whNo" />
-    <result column="wh_name" jdbcType="VARCHAR" property="whName" />
-    <result column="locator_control_flag" jdbcType="INTEGER" property="locatorControlFlag" />
-    <result column="entry_mrp_flag" jdbcType="INTEGER" property="entryMrpFlag" />
-    <result column="org_id" jdbcType="VARCHAR" property="orgId" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="warehouse_code" jdbcType="VARCHAR" property="warehouseCode" />
+    <result column="warehouse_name" jdbcType="VARCHAR" property="warehouseName" />
+    <result column="is_location_enabled" jdbcType="TINYINT" property="isLocationEnabled" />
+    <result column="is_mrp_enabled" jdbcType="TINYINT" property="isMrpEnabled" />
+    <result column="org_id" jdbcType="BIGINT" property="orgId" />
     <result column="attribute" jdbcType="VARCHAR" property="attribute" />
-    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
-    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="is_enabled" jdbcType="TINYINT" property="isEnabled" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_id" jdbcType="BIGINT" property="createId" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+    <result column="modified_id" jdbcType="BIGINT" property="modifiedId" />
   </resultMap>
-
-  <sql id="Base_Column_List_1">
-    id, wh_no, wh_name
-  </sql>
-
   <sql id="Base_Column_List">
-    id, wh_no, wh_name, locator_control_flag, entry_mrp_flag, org_id, attribute, create_date, 
-    create_by
+    id, warehouse_code, warehouse_name, is_location_enabled, is_mrp_enabled, org_id, 
+    attribute, is_enabled, is_deleted, create_time, create_id, modified_time, modified_id
   </sql>
-
-
-  <select id="selectInvWarehouseByID" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
-    <include refid="Base_Column_List_1" />
+    <include refid="Base_Column_List" />
     from inv_warehouse
-    where id = #{id,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-
-
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from inv_warehouse
-    where id = #{id,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.prd.module.warehouse.entity.InvWarehouse">
-    insert into inv_warehouse (id, wh_no, wh_name, 
-      locator_control_flag, entry_mrp_flag, org_id, 
-      attribute, create_date, create_by
-      )
-    values (#{id,jdbcType=VARCHAR}, #{whNo,jdbcType=VARCHAR}, #{whName,jdbcType=VARCHAR}, 
-      #{locatorControlFlag,jdbcType=INTEGER}, #{entryMrpFlag,jdbcType=INTEGER}, #{orgId,jdbcType=VARCHAR}, 
-      #{attribute,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}
-      )
+    insert into inv_warehouse (id, warehouse_code, warehouse_name, 
+      is_location_enabled, is_mrp_enabled, org_id, 
+      attribute, is_enabled, is_deleted, 
+      create_time, create_id, modified_time, 
+      modified_id)
+    values (#{id,jdbcType=BIGINT}, #{warehouseCode,jdbcType=VARCHAR}, #{warehouseName,jdbcType=VARCHAR}, 
+      #{isLocationEnabled,jdbcType=TINYINT}, #{isMrpEnabled,jdbcType=TINYINT}, #{orgId,jdbcType=BIGINT}, 
+      #{attribute,jdbcType=VARCHAR}, #{isEnabled,jdbcType=TINYINT}, #{isDeleted,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createId,jdbcType=BIGINT}, #{modifiedTime,jdbcType=TIMESTAMP}, 
+      #{modifiedId,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.prd.module.warehouse.entity.InvWarehouse">
     insert into inv_warehouse
@@ -51,17 +48,17 @@
       <if test="id != null">
         id,
       </if>
-      <if test="whNo != null">
-        wh_no,
+      <if test="warehouseCode != null">
+        warehouse_code,
       </if>
-      <if test="whName != null">
-        wh_name,
+      <if test="warehouseName != null">
+        warehouse_name,
       </if>
-      <if test="locatorControlFlag != null">
-        locator_control_flag,
+      <if test="isLocationEnabled != null">
+        is_location_enabled,
       </if>
-      <if test="entryMrpFlag != null">
-        entry_mrp_flag,
+      <if test="isMrpEnabled != null">
+        is_mrp_enabled,
       </if>
       <if test="orgId != null">
         org_id,
@@ -69,83 +66,123 @@
       <if test="attribute != null">
         attribute,
       </if>
-      <if test="createDate != null">
-        create_date,
+      <if test="isEnabled != null">
+        is_enabled,
       </if>
-      <if test="createBy != null">
-        create_by,
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createId != null">
+        create_id,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+      <if test="modifiedId != null">
+        modified_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=VARCHAR},
+        #{id,jdbcType=BIGINT},
       </if>
-      <if test="whNo != null">
-        #{whNo,jdbcType=VARCHAR},
+      <if test="warehouseCode != null">
+        #{warehouseCode,jdbcType=VARCHAR},
       </if>
-      <if test="whName != null">
-        #{whName,jdbcType=VARCHAR},
+      <if test="warehouseName != null">
+        #{warehouseName,jdbcType=VARCHAR},
       </if>
-      <if test="locatorControlFlag != null">
-        #{locatorControlFlag,jdbcType=INTEGER},
+      <if test="isLocationEnabled != null">
+        #{isLocationEnabled,jdbcType=TINYINT},
       </if>
-      <if test="entryMrpFlag != null">
-        #{entryMrpFlag,jdbcType=INTEGER},
+      <if test="isMrpEnabled != null">
+        #{isMrpEnabled,jdbcType=TINYINT},
       </if>
       <if test="orgId != null">
-        #{orgId,jdbcType=VARCHAR},
+        #{orgId,jdbcType=BIGINT},
       </if>
       <if test="attribute != null">
         #{attribute,jdbcType=VARCHAR},
       </if>
-      <if test="createDate != null">
-        #{createDate,jdbcType=TIMESTAMP},
+      <if test="isEnabled != null">
+        #{isEnabled,jdbcType=TINYINT},
       </if>
-      <if test="createBy != null">
-        #{createBy,jdbcType=VARCHAR},
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createId != null">
+        #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedId != null">
+        #{modifiedId,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.prd.module.warehouse.entity.InvWarehouse">
     update inv_warehouse
     <set>
-      <if test="whNo != null">
-        wh_no = #{whNo,jdbcType=VARCHAR},
+      <if test="warehouseCode != null">
+        warehouse_code = #{warehouseCode,jdbcType=VARCHAR},
       </if>
-      <if test="whName != null">
-        wh_name = #{whName,jdbcType=VARCHAR},
+      <if test="warehouseName != null">
+        warehouse_name = #{warehouseName,jdbcType=VARCHAR},
       </if>
-      <if test="locatorControlFlag != null">
-        locator_control_flag = #{locatorControlFlag,jdbcType=INTEGER},
+      <if test="isLocationEnabled != null">
+        is_location_enabled = #{isLocationEnabled,jdbcType=TINYINT},
       </if>
-      <if test="entryMrpFlag != null">
-        entry_mrp_flag = #{entryMrpFlag,jdbcType=INTEGER},
+      <if test="isMrpEnabled != null">
+        is_mrp_enabled = #{isMrpEnabled,jdbcType=TINYINT},
       </if>
       <if test="orgId != null">
-        org_id = #{orgId,jdbcType=VARCHAR},
+        org_id = #{orgId,jdbcType=BIGINT},
       </if>
       <if test="attribute != null">
         attribute = #{attribute,jdbcType=VARCHAR},
       </if>
-      <if test="createDate != null">
-        create_date = #{createDate,jdbcType=TIMESTAMP},
+      <if test="isEnabled != null">
+        is_enabled = #{isEnabled,jdbcType=TINYINT},
       </if>
-      <if test="createBy != null">
-        create_by = #{createBy,jdbcType=VARCHAR},
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createId != null">
+        create_id = #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedId != null">
+        modified_id = #{modifiedId,jdbcType=BIGINT},
       </if>
     </set>
-    where id = #{id,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.prd.module.warehouse.entity.InvWarehouse">
     update inv_warehouse
-    set wh_no = #{whNo,jdbcType=VARCHAR},
-      wh_name = #{whName,jdbcType=VARCHAR},
-      locator_control_flag = #{locatorControlFlag,jdbcType=INTEGER},
-      entry_mrp_flag = #{entryMrpFlag,jdbcType=INTEGER},
-      org_id = #{orgId,jdbcType=VARCHAR},
+    set warehouse_code = #{warehouseCode,jdbcType=VARCHAR},
+      warehouse_name = #{warehouseName,jdbcType=VARCHAR},
+      is_location_enabled = #{isLocationEnabled,jdbcType=TINYINT},
+      is_mrp_enabled = #{isMrpEnabled,jdbcType=TINYINT},
+      org_id = #{orgId,jdbcType=BIGINT},
       attribute = #{attribute,jdbcType=VARCHAR},
-      create_date = #{createDate,jdbcType=TIMESTAMP},
-      create_by = #{createBy,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=VARCHAR}
+      is_enabled = #{isEnabled,jdbcType=TINYINT},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_id = #{createId,jdbcType=BIGINT},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      modified_id = #{modifiedId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

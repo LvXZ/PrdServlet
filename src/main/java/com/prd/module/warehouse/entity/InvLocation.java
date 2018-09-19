@@ -3,118 +3,78 @@ package com.prd.module.warehouse.entity;
 import java.util.Date;
 
 public class InvLocation {
-    private String id;
+    private Long id;
 
-    private String whId;
+    private Long warehouseId;
 
-    private String locaNo;
+    private String locationCode;
 
-    private String locaName;
+    private String locationName;
 
-    private String locaType;
+    private Byte locationType;
 
-    private String locaStatus;
-
-    private String entryMrpFlag;
-
-    private Date disableDate;
-
-    private String orgId;
+    private Byte isMrpEnabled;
 
     private String attribute;
 
-    private Date createDate;
+    private Byte isEnabled;
 
-    private String createBy;
+    private Byte isDeleted;
 
-    private Date modifyDate;
+    private Date createTime;
 
-    private String modifyBy;
+    private Long createId;
 
-    private Integer prio;
+    private Date modifiedTime;
 
-    private String ctype;
+    private Long modifiedId;
 
-    private String peitao;
-
-    private String chuku;
-
-    private String ruku;
-
-    private String zhuanru;
-
-    private String zhuanchu;
-
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getWhId() {
-        return whId;
+    public Long getWarehouseId() {
+        return warehouseId;
     }
 
-    public void setWhId(String whId) {
-        this.whId = whId;
+    public void setWarehouseId(Long warehouseId) {
+        this.warehouseId = warehouseId;
     }
 
-    public String getLocaNo() {
-        return locaNo;
+    public String getLocationCode() {
+        return locationCode;
     }
 
-    public void setLocaNo(String locaNo) {
-        this.locaNo = locaNo;
+    public void setLocationCode(String locationCode) {
+        this.locationCode = locationCode;
     }
 
-    public String getLocaName() {
-        return locaName;
+    public String getLocationName() {
+        return locationName;
     }
 
-    public void setLocaName(String locaName) {
-        this.locaName = locaName;
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
     }
 
-    public String getLocaType() {
-        return locaType;
+    public Byte getLocationType() {
+        return locationType;
     }
 
-    public void setLocaType(String locaType) {
-        this.locaType = locaType;
+    public void setLocationType(Byte locationType) {
+        this.locationType = locationType;
     }
 
-    public String getLocaStatus() {
-        return locaStatus;
+    public Byte getIsMrpEnabled() {
+        return isMrpEnabled;
     }
 
-    public void setLocaStatus(String locaStatus) {
-        this.locaStatus = locaStatus;
-    }
-
-    public String getEntryMrpFlag() {
-        return entryMrpFlag;
-    }
-
-    public void setEntryMrpFlag(String entryMrpFlag) {
-        this.entryMrpFlag = entryMrpFlag;
-    }
-
-    public Date getDisableDate() {
-        return disableDate;
-    }
-
-    public void setDisableDate(Date disableDate) {
-        this.disableDate = disableDate;
-    }
-
-    public String getOrgId() {
-        return orgId;
-    }
-
-    public void setOrgId(String orgId) {
-        this.orgId = orgId;
+    public void setIsMrpEnabled(Byte isMrpEnabled) {
+        this.isMrpEnabled = isMrpEnabled;
     }
 
     public String getAttribute() {
@@ -125,91 +85,51 @@ public class InvLocation {
         this.attribute = attribute;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public Byte getIsEnabled() {
+        return isEnabled;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setIsEnabled(Byte isEnabled) {
+        this.isEnabled = isEnabled;
     }
 
-    public String getCreateBy() {
-        return createBy;
+    public Byte getIsDeleted() {
+        return isDeleted;
     }
 
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy;
+    public void setIsDeleted(Byte isDeleted) {
+        this.isDeleted = isDeleted;
     }
 
-    public Date getModifyDate() {
-        return modifyDate;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setModifyDate(Date modifyDate) {
-        this.modifyDate = modifyDate;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public String getModifyBy() {
-        return modifyBy;
+    public Long getCreateId() {
+        return createId;
     }
 
-    public void setModifyBy(String modifyBy) {
-        this.modifyBy = modifyBy;
+    public void setCreateId(Long createId) {
+        this.createId = createId;
     }
 
-    public Integer getPrio() {
-        return prio;
+    public Date getModifiedTime() {
+        return modifiedTime;
     }
 
-    public void setPrio(Integer prio) {
-        this.prio = prio;
+    public void setModifiedTime(Date modifiedTime) {
+        this.modifiedTime = modifiedTime;
     }
 
-    public String getCtype() {
-        return ctype;
+    public Long getModifiedId() {
+        return modifiedId;
     }
 
-    public void setCtype(String ctype) {
-        this.ctype = ctype;
-    }
-
-    public String getPeitao() {
-        return peitao;
-    }
-
-    public void setPeitao(String peitao) {
-        this.peitao = peitao;
-    }
-
-    public String getChuku() {
-        return chuku;
-    }
-
-    public void setChuku(String chuku) {
-        this.chuku = chuku;
-    }
-
-    public String getRuku() {
-        return ruku;
-    }
-
-    public void setRuku(String ruku) {
-        this.ruku = ruku;
-    }
-
-    public String getZhuanru() {
-        return zhuanru;
-    }
-
-    public void setZhuanru(String zhuanru) {
-        this.zhuanru = zhuanru;
-    }
-
-    public String getZhuanchu() {
-        return zhuanchu;
-    }
-
-    public void setZhuanchu(String zhuanchu) {
-        this.zhuanchu = zhuanchu;
+    public void setModifiedId(Long modifiedId) {
+        this.modifiedId = modifiedId;
     }
 }

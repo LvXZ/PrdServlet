@@ -1,15 +1,16 @@
-package com.prd.module.warehouse.service.impl;
+package com.prd.module.warehouse0.service.impl;
 
-import com.prd.module.warehouse.dao.*;
 import com.prd.dto.MessageDTO;
 import com.prd.dto.ResponseDTO;
+import com.prd.module.warehouse.dao.*;
 import com.prd.module.warehouse.entity.*;
-import com.prd.module.warehouse.service.DispatchService;
+import com.prd.module.warehouse0.service.DispatchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.math.BigDecimal;
 
 

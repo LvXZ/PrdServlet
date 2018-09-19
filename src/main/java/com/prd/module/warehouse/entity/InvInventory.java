@@ -3,17 +3,15 @@ package com.prd.module.warehouse.entity;
 import java.math.BigDecimal;
 
 public class InvInventory {
-    private String id;
+    private Long id;
 
-    private String itemId;
+    private Long itemId;
 
-    private String itemSpec;
+    private Long warehouseId;
 
-    private String whId;
+    private Long locationId;
 
-    private String locaId;
-
-    private BigDecimal quantity;
+    private BigDecimal availableQuantity;
 
     private BigDecimal assignQuantity;
 
@@ -21,52 +19,44 @@ public class InvInventory {
 
     private BigDecimal avgCost;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getItemId() {
+    public Long getItemId() {
         return itemId;
     }
 
-    public void setItemId(String itemId) {
+    public void setItemId(Long itemId) {
         this.itemId = itemId;
     }
 
-    public String getItemSpec() {
-        return itemSpec;
+    public Long getWarehouseId() {
+        return warehouseId;
     }
 
-    public void setItemSpec(String itemSpec) {
-        this.itemSpec = itemSpec;
+    public void setWarehouseId(Long warehouseId) {
+        this.warehouseId = warehouseId;
     }
 
-    public String getWhId() {
-        return whId;
+    public Long getLocationId() {
+        return locationId;
     }
 
-    public void setWhId(String whId) {
-        this.whId = whId;
+    public void setLocationId(Long locationId) {
+        this.locationId = locationId;
     }
 
-    public String getLocaId() {
-        return locaId;
+    public BigDecimal getAvailableQuantity() {
+        return availableQuantity;
     }
 
-    public void setLocaId(String locaId) {
-        this.locaId = locaId;
-    }
-
-    public BigDecimal getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(BigDecimal quantity) {
-        this.quantity = quantity;
+    public void setAvailableQuantity(BigDecimal availableQuantity) {
+        this.availableQuantity = availableQuantity;
     }
 
     public BigDecimal getAssignQuantity() {

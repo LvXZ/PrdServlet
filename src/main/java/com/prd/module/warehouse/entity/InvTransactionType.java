@@ -3,37 +3,37 @@ package com.prd.module.warehouse.entity;
 import java.util.Date;
 
 public class InvTransactionType {
-    private String id;
+    private Long id;
 
     private String transType;
 
-    private String transNo;
+    private String transCode;
 
     private String transName;
 
     private String transFlow;
 
-    private String userDefineFlag;
+    private Byte isUserDefined;
 
-    private String enableFlag;
+    private Byte isEnabled;
 
-    private Date disableDate;
+    private Date disabledTime;
 
     private String attribute;
 
-    private String createBy;
+    private Date createTime;
 
-    private Date createDate;
+    private Long createId;
 
-    private String modifyBy;
+    private Date modifiedTime;
 
-    private Date modifyDate;
+    private Long modifiedId;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -45,12 +45,12 @@ public class InvTransactionType {
         this.transType = transType;
     }
 
-    public String getTransNo() {
-        return transNo;
+    public String getTransCode() {
+        return transCode;
     }
 
-    public void setTransNo(String transNo) {
-        this.transNo = transNo;
+    public void setTransCode(String transCode) {
+        this.transCode = transCode;
     }
 
     public String getTransName() {
@@ -69,28 +69,28 @@ public class InvTransactionType {
         this.transFlow = transFlow;
     }
 
-    public String getUserDefineFlag() {
-        return userDefineFlag;
+    public Byte getIsUserDefined() {
+        return isUserDefined;
     }
 
-    public void setUserDefineFlag(String userDefineFlag) {
-        this.userDefineFlag = userDefineFlag;
+    public void setIsUserDefined(Byte isUserDefined) {
+        this.isUserDefined = isUserDefined;
     }
 
-    public String getEnableFlag() {
-        return enableFlag;
+    public Byte getIsEnabled() {
+        return isEnabled;
     }
 
-    public void setEnableFlag(String enableFlag) {
-        this.enableFlag = enableFlag;
+    public void setIsEnabled(Byte isEnabled) {
+        this.isEnabled = isEnabled;
     }
 
-    public Date getDisableDate() {
-        return disableDate;
+    public Date getDisabledTime() {
+        return disabledTime;
     }
 
-    public void setDisableDate(Date disableDate) {
-        this.disableDate = disableDate;
+    public void setDisabledTime(Date disabledTime) {
+        this.disabledTime = disabledTime;
     }
 
     public String getAttribute() {
@@ -101,35 +101,35 @@ public class InvTransactionType {
         this.attribute = attribute;
     }
 
-    public String getCreateBy() {
-        return createBy;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public Long getCreateId() {
+        return createId;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setCreateId(Long createId) {
+        this.createId = createId;
     }
 
-    public String getModifyBy() {
-        return modifyBy;
+    public Date getModifiedTime() {
+        return modifiedTime;
     }
 
-    public void setModifyBy(String modifyBy) {
-        this.modifyBy = modifyBy;
+    public void setModifiedTime(Date modifiedTime) {
+        this.modifiedTime = modifiedTime;
     }
 
-    public Date getModifyDate() {
-        return modifyDate;
+    public Long getModifiedId() {
+        return modifiedId;
     }
 
-    public void setModifyDate(Date modifyDate) {
-        this.modifyDate = modifyDate;
+    public void setModifiedId(Long modifiedId) {
+        this.modifiedId = modifiedId;
     }
 }

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--此处的MyBatis映射文件，为warehouse0.0版本，运行时请将对应映射type实体类文件夹warehouse，改为warehouse0-->
+<mapper namespace="com.prd.module.warehouse.dao.InvInventoryDAO">
+  <resultMap id="BaseResultMap" type="com.prd.module.warehouse.entity.InvInventory">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="item_id" jdbcType="VARCHAR" property="itemId" />
+    <result column="item_spec" jdbcType="VARCHAR" property="itemSpec" />
+    <result column="wh_id" jdbcType="VARCHAR" property="whId" />
+    <result column="loca_id" jdbcType="VARCHAR" property="locaId" />
+    <result column="quantity" jdbcType="DECIMAL" property="quantity" />
+    <result column="assign_quantity" jdbcType="DECIMAL" property="assignQuantity" />
+    <result column="block_quantity" jdbcType="DECIMAL" property="blockQuantity" />
+    <result column="avg_cost" jdbcType="DECIMAL" property="avgCost" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, item_id, item_spec, wh_id, loca_id, quantity, assign_quantity, block_quantity, 
+    avg_cost
+  </sql>
+
+  <select id="selectInvInventoryByInvMoveOrder" parameterType="com.prd.module.warehouse.entity.InvMoveOrder" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from inv_inventory
+    where item_id = #{itemId,jdbcType=VARCHAR} AND wh_id = #{destWhId,jdbcType=VARCHAR} AND loca_id = #{destLocaId,jdbcType=VARCHAR}
+  </select>
+
+
+ <!-- 出库时根据inv_move_order 中的sourceWhId和sourceLocaId 查找-->
+  <select id="selectInvInventoryByInvMoveOrder2" parameterType="com.prd.module.warehouse.entity.InvMoveOrder" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from inv_inventory
+    where item_id = #{itemId,jdbcType=VARCHAR} AND wh_id = #{sourceWhId,jdbcType=VARCHAR} AND loca_id = #{sourceLocaId,jdbcType=VARCHAR}
+  </select>
+
+
+  <update id="updateInvInventoryBySelf" parameterType="com.prd.module.warehouse.entity.InvInventory">
+    update inv_inventory
+    set quantity = #{quantity,jdbcType=DECIMAL}
+    where item_id = #{itemId,jdbcType=VARCHAR} AND wh_id = #{whId,jdbcType=VARCHAR} AND loca_id = #{locaId,jdbcType=VARCHAR}
+  </update>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from inv_inventory
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.prd.module.warehouse.entity.InvInventory">
+    insert into inv_inventory (id, item_id, item_spec, 
+      wh_id, loca_id, quantity, 
+      assign_quantity, block_quantity, avg_cost
+      )
+    values (#{id,jdbcType=VARCHAR}, #{itemId,jdbcType=VARCHAR}, #{itemSpec,jdbcType=VARCHAR}, 
+      #{whId,jdbcType=VARCHAR}, #{locaId,jdbcType=VARCHAR}, #{quantity,jdbcType=DECIMAL}, 
+      #{assignQuantity,jdbcType=DECIMAL}, #{blockQuantity,jdbcType=DECIMAL}, #{avgCost,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.prd.module.warehouse.entity.InvInventory">
+    insert into inv_inventory
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="itemSpec != null">
+        item_spec,
+      </if>
+      <if test="whId != null">
+        wh_id,
+      </if>
+      <if test="locaId != null">
+        loca_id,
+      </if>
+      <if test="quantity != null">
+        quantity,
+      </if>
+      <if test="assignQuantity != null">
+        assign_quantity,
+      </if>
+      <if test="blockQuantity != null">
+        block_quantity,
+      </if>
+      <if test="avgCost != null">
+        avg_cost,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemSpec != null">
+        #{itemSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="whId != null">
+        #{whId,jdbcType=VARCHAR},
+      </if>
+      <if test="locaId != null">
+        #{locaId,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null">
+        #{quantity,jdbcType=DECIMAL},
+      </if>
+      <if test="assignQuantity != null">
+        #{assignQuantity,jdbcType=DECIMAL},
+      </if>
+      <if test="blockQuantity != null">
+        #{blockQuantity,jdbcType=DECIMAL},
+      </if>
+      <if test="avgCost != null">
+        #{avgCost,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.prd.module.warehouse.entity.InvInventory">
+    update inv_inventory
+    <set>
+      <if test="itemId != null">
+        item_id = #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemSpec != null">
+        item_spec = #{itemSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="whId != null">
+        wh_id = #{whId,jdbcType=VARCHAR},
+      </if>
+      <if test="locaId != null">
+        loca_id = #{locaId,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null">
+        quantity = #{quantity,jdbcType=DECIMAL},
+      </if>
+      <if test="assignQuantity != null">
+        assign_quantity = #{assignQuantity,jdbcType=DECIMAL},
+      </if>
+      <if test="blockQuantity != null">
+        block_quantity = #{blockQuantity,jdbcType=DECIMAL},
+      </if>
+      <if test="avgCost != null">
+        avg_cost = #{avgCost,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.prd.module.warehouse.entity.InvInventory">
+    update inv_inventory
+    set item_id = #{itemId,jdbcType=VARCHAR},
+      item_spec = #{itemSpec,jdbcType=VARCHAR},
+      wh_id = #{whId,jdbcType=VARCHAR},
+      loca_id = #{locaId,jdbcType=VARCHAR},
+      quantity = #{quantity,jdbcType=DECIMAL},
+      assign_quantity = #{assignQuantity,jdbcType=DECIMAL},
+      block_quantity = #{blockQuantity,jdbcType=DECIMAL},
+      avg_cost = #{avgCost,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prd.module.warehouse.dao.InvItemDAO">
+  <resultMap id="BaseResultMap" type="com.prd.module.warehouse.entity.InvItem">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="item_code" jdbcType="VARCHAR" property="itemCode" />
+    <result column="item_name" jdbcType="VARCHAR" property="itemName" />
+    <result column="item_type" jdbcType="TINYINT" property="itemType" />
+    <result column="item_group" jdbcType="TINYINT" property="itemGroup" />
+    <result column="unit_id" jdbcType="BIGINT" property="unitId" />
+    <result column="default_warehouse_id" jdbcType="BIGINT" property="defaultWarehouseId" />
+    <result column="default_location_id" jdbcType="BIGINT" property="defaultLocationId" />
+    <result column="serial_control" jdbcType="TINYINT" property="serialControl" />
+    <result column="spec_control" jdbcType="TINYINT" property="specControl" />
+    <result column="safe_inventory" jdbcType="DECIMAL" property="safeInventory" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_id" jdbcType="BIGINT" property="createId" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+    <result column="modified_id" jdbcType="BIGINT" property="modifiedId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, item_code, item_name, item_type, item_group, unit_id, default_warehouse_id, default_location_id, 
+    serial_control, spec_control, safe_inventory, create_time, create_id, modified_time, 
+    modified_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from inv_item
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from inv_item
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.prd.module.warehouse.entity.InvItem">
+    insert into inv_item (id, item_code, item_name, 
+      item_type, item_group, unit_id, 
+      default_warehouse_id, default_location_id, serial_control, 
+      spec_control, safe_inventory, create_time, 
+      create_id, modified_time, modified_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{itemCode,jdbcType=VARCHAR}, #{itemName,jdbcType=VARCHAR}, 
+      #{itemType,jdbcType=TINYINT}, #{itemGroup,jdbcType=TINYINT}, #{unitId,jdbcType=BIGINT}, 
+      #{defaultWarehouseId,jdbcType=BIGINT}, #{defaultLocationId,jdbcType=BIGINT}, #{serialControl,jdbcType=TINYINT}, 
+      #{specControl,jdbcType=TINYINT}, #{safeInventory,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createId,jdbcType=BIGINT}, #{modifiedTime,jdbcType=TIMESTAMP}, #{modifiedId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.prd.module.warehouse.entity.InvItem">
+    insert into inv_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="itemCode != null">
+        item_code,
+      </if>
+      <if test="itemName != null">
+        item_name,
+      </if>
+      <if test="itemType != null">
+        item_type,
+      </if>
+      <if test="itemGroup != null">
+        item_group,
+      </if>
+      <if test="unitId != null">
+        unit_id,
+      </if>
+      <if test="defaultWarehouseId != null">
+        default_warehouse_id,
+      </if>
+      <if test="defaultLocationId != null">
+        default_location_id,
+      </if>
+      <if test="serialControl != null">
+        serial_control,
+      </if>
+      <if test="specControl != null">
+        spec_control,
+      </if>
+      <if test="safeInventory != null">
+        safe_inventory,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createId != null">
+        create_id,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+      <if test="modifiedId != null">
+        modified_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="itemCode != null">
+        #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null">
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemType != null">
+        #{itemType,jdbcType=TINYINT},
+      </if>
+      <if test="itemGroup != null">
+        #{itemGroup,jdbcType=TINYINT},
+      </if>
+      <if test="unitId != null">
+        #{unitId,jdbcType=BIGINT},
+      </if>
+      <if test="defaultWarehouseId != null">
+        #{defaultWarehouseId,jdbcType=BIGINT},
+      </if>
+      <if test="defaultLocationId != null">
+        #{defaultLocationId,jdbcType=BIGINT},
+      </if>
+      <if test="serialControl != null">
+        #{serialControl,jdbcType=TINYINT},
+      </if>
+      <if test="specControl != null">
+        #{specControl,jdbcType=TINYINT},
+      </if>
+      <if test="safeInventory != null">
+        #{safeInventory,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createId != null">
+        #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedId != null">
+        #{modifiedId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.prd.module.warehouse.entity.InvItem">
+    update inv_item
+    <set>
+      <if test="itemCode != null">
+        item_code = #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null">
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemType != null">
+        item_type = #{itemType,jdbcType=TINYINT},
+      </if>
+      <if test="itemGroup != null">
+        item_group = #{itemGroup,jdbcType=TINYINT},
+      </if>
+      <if test="unitId != null">
+        unit_id = #{unitId,jdbcType=BIGINT},
+      </if>
+      <if test="defaultWarehouseId != null">
+        default_warehouse_id = #{defaultWarehouseId,jdbcType=BIGINT},
+      </if>
+      <if test="defaultLocationId != null">
+        default_location_id = #{defaultLocationId,jdbcType=BIGINT},
+      </if>
+      <if test="serialControl != null">
+        serial_control = #{serialControl,jdbcType=TINYINT},
+      </if>
+      <if test="specControl != null">
+        spec_control = #{specControl,jdbcType=TINYINT},
+      </if>
+      <if test="safeInventory != null">
+        safe_inventory = #{safeInventory,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createId != null">
+        create_id = #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedId != null">
+        modified_id = #{modifiedId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.prd.module.warehouse.entity.InvItem">
+    update inv_item
+    set item_code = #{itemCode,jdbcType=VARCHAR},
+      item_name = #{itemName,jdbcType=VARCHAR},
+      item_type = #{itemType,jdbcType=TINYINT},
+      item_group = #{itemGroup,jdbcType=TINYINT},
+      unit_id = #{unitId,jdbcType=BIGINT},
+      default_warehouse_id = #{defaultWarehouseId,jdbcType=BIGINT},
+      default_location_id = #{defaultLocationId,jdbcType=BIGINT},
+      serial_control = #{serialControl,jdbcType=TINYINT},
+      spec_control = #{specControl,jdbcType=TINYINT},
+      safe_inventory = #{safeInventory,jdbcType=DECIMAL},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_id = #{createId,jdbcType=BIGINT},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      modified_id = #{modifiedId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

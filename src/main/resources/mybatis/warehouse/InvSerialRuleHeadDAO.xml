@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prd.module.warehouse.dao.InvSerialRuleHeadDAO">
+  <resultMap id="BaseResultMap" type="com.prd.module.warehouse.entity.InvSerialRuleHead">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="rule_type" jdbcType="TINYINT" property="ruleType" />
+    <result column="item_id" jdbcType="BIGINT" property="itemId" />
+    <result column="serial_type" jdbcType="TINYINT" property="serialType" />
+    <result column="rule_no" jdbcType="INTEGER" property="ruleNo" />
+    <result column="rule_name" jdbcType="VARCHAR" property="ruleName" />
+    <result column="attribute" jdbcType="VARCHAR" property="attribute" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, rule_type, item_id, serial_type, rule_no, rule_name, attribute
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from inv_serial_rule_head
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from inv_serial_rule_head
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.prd.module.warehouse.entity.InvSerialRuleHead">
+    insert into inv_serial_rule_head (id, rule_type, item_id, 
+      serial_type, rule_no, rule_name, 
+      attribute)
+    values (#{id,jdbcType=BIGINT}, #{ruleType,jdbcType=TINYINT}, #{itemId,jdbcType=BIGINT}, 
+      #{serialType,jdbcType=TINYINT}, #{ruleNo,jdbcType=INTEGER}, #{ruleName,jdbcType=VARCHAR}, 
+      #{attribute,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.prd.module.warehouse.entity.InvSerialRuleHead">
+    insert into inv_serial_rule_head
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="ruleType != null">
+        rule_type,
+      </if>
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="serialType != null">
+        serial_type,
+      </if>
+      <if test="ruleNo != null">
+        rule_no,
+      </if>
+      <if test="ruleName != null">
+        rule_name,
+      </if>
+      <if test="attribute != null">
+        attribute,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="ruleType != null">
+        #{ruleType,jdbcType=TINYINT},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="serialType != null">
+        #{serialType,jdbcType=TINYINT},
+      </if>
+      <if test="ruleNo != null">
+        #{ruleNo,jdbcType=INTEGER},
+      </if>
+      <if test="ruleName != null">
+        #{ruleName,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null">
+        #{attribute,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.prd.module.warehouse.entity.InvSerialRuleHead">
+    update inv_serial_rule_head
+    <set>
+      <if test="ruleType != null">
+        rule_type = #{ruleType,jdbcType=TINYINT},
+      </if>
+      <if test="itemId != null">
+        item_id = #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="serialType != null">
+        serial_type = #{serialType,jdbcType=TINYINT},
+      </if>
+      <if test="ruleNo != null">
+        rule_no = #{ruleNo,jdbcType=INTEGER},
+      </if>
+      <if test="ruleName != null">
+        rule_name = #{ruleName,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null">
+        attribute = #{attribute,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.prd.module.warehouse.entity.InvSerialRuleHead">
+    update inv_serial_rule_head
+    set rule_type = #{ruleType,jdbcType=TINYINT},
+      item_id = #{itemId,jdbcType=BIGINT},
+      serial_type = #{serialType,jdbcType=TINYINT},
+      rule_no = #{ruleNo,jdbcType=INTEGER},
+      rule_name = #{ruleName,jdbcType=VARCHAR},
+      attribute = #{attribute,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

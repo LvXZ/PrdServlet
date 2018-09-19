@@ -3,21 +3,13 @@ package com.prd.module.warehouse.dao;
 import com.prd.module.warehouse.entity.InvLocation;
 
 public interface InvLocationDAO {
-
-    /**
-     *  根据 id 查询 InvLocation
-     * @param id
-     * @return
-     */
-    InvLocation selectInvLocationByID(String id);
-
-
-    int deleteByPrimaryKey(String id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(InvLocation record);
 
     int insertSelective(InvLocation record);
 
+    InvLocation selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(InvLocation record);
 

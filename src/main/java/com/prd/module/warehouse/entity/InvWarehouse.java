@@ -3,69 +3,77 @@ package com.prd.module.warehouse.entity;
 import java.util.Date;
 
 public class InvWarehouse {
-    private String id;
+    private Long id;
 
-    private String whNo;
+    private String warehouseCode;
 
-    private String whName;
+    private String warehouseName;
 
-    private Integer locatorControlFlag;
+    private Byte isLocationEnabled;
 
-    private Integer entryMrpFlag;
+    private Byte isMrpEnabled;
 
-    private String orgId;
+    private Long orgId;
 
     private String attribute;
 
-    private Date createDate;
+    private Byte isEnabled;
 
-    private String createBy;
+    private Byte isDeleted;
 
-    public String getId() {
+    private Date createTime;
+
+    private Long createId;
+
+    private Date modifiedTime;
+
+    private Long modifiedId;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getWhNo() {
-        return whNo;
+    public String getWarehouseCode() {
+        return warehouseCode;
     }
 
-    public void setWhNo(String whNo) {
-        this.whNo = whNo;
+    public void setWarehouseCode(String warehouseCode) {
+        this.warehouseCode = warehouseCode;
     }
 
-    public String getWhName() {
-        return whName;
+    public String getWarehouseName() {
+        return warehouseName;
     }
 
-    public void setWhName(String whName) {
-        this.whName = whName;
+    public void setWarehouseName(String warehouseName) {
+        this.warehouseName = warehouseName;
     }
 
-    public Integer getLocatorControlFlag() {
-        return locatorControlFlag;
+    public Byte getIsLocationEnabled() {
+        return isLocationEnabled;
     }
 
-    public void setLocatorControlFlag(Integer locatorControlFlag) {
-        this.locatorControlFlag = locatorControlFlag;
+    public void setIsLocationEnabled(Byte isLocationEnabled) {
+        this.isLocationEnabled = isLocationEnabled;
     }
 
-    public Integer getEntryMrpFlag() {
-        return entryMrpFlag;
+    public Byte getIsMrpEnabled() {
+        return isMrpEnabled;
     }
 
-    public void setEntryMrpFlag(Integer entryMrpFlag) {
-        this.entryMrpFlag = entryMrpFlag;
+    public void setIsMrpEnabled(Byte isMrpEnabled) {
+        this.isMrpEnabled = isMrpEnabled;
     }
 
-    public String getOrgId() {
+    public Long getOrgId() {
         return orgId;
     }
 
-    public void setOrgId(String orgId) {
+    public void setOrgId(Long orgId) {
         this.orgId = orgId;
     }
 
@@ -77,19 +85,51 @@ public class InvWarehouse {
         this.attribute = attribute;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public Byte getIsEnabled() {
+        return isEnabled;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setIsEnabled(Byte isEnabled) {
+        this.isEnabled = isEnabled;
     }
 
-    public String getCreateBy() {
-        return createBy;
+    public Byte getIsDeleted() {
+        return isDeleted;
     }
 
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy;
+    public void setIsDeleted(Byte isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Long getCreateId() {
+        return createId;
+    }
+
+    public void setCreateId(Long createId) {
+        this.createId = createId;
+    }
+
+    public Date getModifiedTime() {
+        return modifiedTime;
+    }
+
+    public void setModifiedTime(Date modifiedTime) {
+        this.modifiedTime = modifiedTime;
+    }
+
+    public Long getModifiedId() {
+        return modifiedId;
+    }
+
+    public void setModifiedId(Long modifiedId) {
+        this.modifiedId = modifiedId;
     }
 }
